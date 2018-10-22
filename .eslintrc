@@ -1,0 +1,48 @@
+{
+  "extends": [
+    "react-app",
+    "plugin:jest/recommended",
+    "eslint:recommended",
+    "prettier"
+  ],
+  "plugins": [
+    "import",
+    "jsx-a11y"
+  ],
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true,
+      "experimentalObjectRestSpread": true
+    }
+  },
+  "globals": {
+    "document": true,
+    "window": true,
+    "navigator": true,
+    "it": true,
+    "jest": true,
+    "expect": true,
+    "describe": true
+  },
+  "rules": {
+    "no-unused-vars": [2, {
+      "vars": "all",
+      "args": "none",
+      "ignoreRestSiblings": false
+    }],
+    "no-unused-expressions": [2, {
+      "allowShortCircuit": true,
+      "allowTernary": true,
+      "allowTaggedTemplates": true
+    }],
+    "react/jsx-sort-props": [2, {
+      "noSortAlphabetically": false,
+      "callbacksLast": true
+    }]
+  }
+}

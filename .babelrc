@@ -1,0 +1,22 @@
+{
+  "presets": [[
+    "env", {
+      "targets": {
+        "browsers": ["last 2 versions", "> 5% in BE"],
+        "uglify": true
+      },
+      "modules": false
+    }],
+    "react-app"],
+  "env": {
+    "development": {
+      "plugins": [
+        [
+          "babel-plugin-styled-components", {
+            "displayName": true
+          }
+        ]
+      ]
+    }
+  }
+}
