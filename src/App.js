@@ -2,16 +2,27 @@ import React from "react";
 import styled from "styled-components";
 import "./common/globalStyles";
 
-const Main = () => <Header>mendeleev</Header>;
+const App = () => (
+  <Wrapper>
+    <Aside />
+    <Article />
+  </Wrapper>
+);
 
-export default Main;
+export default App;
 
-const Header = styled.header`
-  height: 100vh;
+const Wrapper = styled.div`
   display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 30px;
+  height: 100vh;
+`;
+
+const Aside = styled.aside`
+  width: 50px;
   background-color: #222;
-  color: white;
+`;
+
+const Article = styled.article`
+  width: 100%;
+  padding: 10px 20px;
+  background-color: #fff;
 `;
