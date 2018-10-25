@@ -8,7 +8,6 @@ export default Main;
 
 const Header = styled.header`
   height: 100vh;
-  font-weight: 100;
   display: flex;
   align-items: center;
   justify-content: center;
