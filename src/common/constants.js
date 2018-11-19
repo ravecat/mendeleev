@@ -1,0 +1,1 @@
+export const MOBILE_RESOLUTION = 1023;
