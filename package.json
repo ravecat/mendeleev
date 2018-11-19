@@ -1,7 +1,6 @@
 {
-  "name": "styled-components-toolbox",
+  "name": "mendeleev",
   "version": "0.1.0",
-  "private": true,
   "dependencies": {
     "autoprefixer": "7.1.6",
     "css-loader": "0.28.7",
@@ -16,6 +15,7 @@
     "resolve": "1.6.0",
     "style-loader": "0.19.0",
     "styled-components": "^3.3.2",
+    "styled-components-toolbox": "^0.0.1",
     "sw-precache-webpack-plugin": "0.11.4",
     "url-loader": "0.6.2",
     "whatwg-fetch": "2.0.3"
@@ -50,7 +50,7 @@
     "object-assign": "4.1.1",
     "postcss-flexbugs-fixes": "3.2.0",
     "postcss-loader": "2.0.8",
-    "prettier": "^1.13.5",
+    "prettier": "^1.15.2",
     "promise": "8.0.1",
     "react-test-renderer": "^16.5.1",
     "stylelint": "^9.3.0",
@@ -65,6 +65,11 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
+    "lint:eslint": "eslint 'src/**/*.{js,jsx}'",
+    "lint:eslint:fix": "yarn lint:eslint --fix",
+    "lint:stylelint": "stylelint 'src/**/*.{js,jsx,css}'",
+    "lint:stylelint:fix": "yarn lint:stylelint --fix",
+    "prettier": "prettier --write 'src/**/*.{js,jsx,json,css,md}'",
     "precommit": "lint-staged",
     "prettier-watch": "onchange '**/*.js' -- prettier --write {{changed}}"
   },
