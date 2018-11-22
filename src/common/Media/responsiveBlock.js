@@ -1,8 +1,6 @@
 import { css } from "styled-components";
 
-const responsiveBlock = (property, resolution, initialProperty) => css`
-  ${initialProperty};
-
+const responsiveBlock = (property, resolution) => css`
   @media (max-width: ${resolution}px) {
     ${property};
   }
