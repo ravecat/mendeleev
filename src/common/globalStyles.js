@@ -9,10 +9,13 @@ injectGlobal`
   }
 
   html {
+    height: 100%;
     color: black;
   }
   
   * {
+    margin: 0;
+    line-height: 1.5;
     font-family: Roboto, sans-serif;
   }
 
