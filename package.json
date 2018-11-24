@@ -70,9 +70,13 @@
     "lint:stylelint": "stylelint 'src/**/*.{js,jsx,css}'",
     "lint:stylelint:fix": "yarn lint:stylelint --fix",
     "prettier": "prettier --write 'src/**/*.{js,jsx,json,css,md}'",
-    "precommit": "lint-staged",
     "prettier-watch": "onchange '**/*.js' -- prettier --write {{changed}}"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  }, 
   "lint-staged": {
     "*.{js,jsx}": [
       "eslint --fix",
