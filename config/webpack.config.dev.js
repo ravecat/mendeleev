@@ -118,9 +118,11 @@ module.exports = {
   node: {
     dgram: "empty",
     fs: "empty",
+    module: "empty",
     net: "empty",
     tls: "empty",
-    child_process: "empty"
+    child_process: "empty",
+    __dirname: true
   },
   performance: {
     hints: false

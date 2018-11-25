@@ -1,12 +1,12 @@
 import { css } from "styled-components";
-import trimSpace from "common/helpers/trimSpace";
-import responsive from "./responsive";
+import responsiveProperty from "./index";
+import trimSpace from "../helpers/trimSpace";
 
 const property = "color";
 const [value, resolution] = ["red", "1023"];
 const [values, resolutions] = [["red", "blue"], ["1023", "1123"]];
 
-describe("responsive return correct result", () => {
+describe("responsiveProperty return correct result", () => {
   test("get individual value", () => {
     const expected = trimSpace(css`
       @media (max-width: ${resolution}px) {
@@ -14,7 +14,7 @@ describe("responsive return correct result", () => {
       }
     `);
 
-    expect(trimSpace(responsive(property, value, resolution))).toEqual(
+    expect(trimSpace(responsiveProperty(property, value, resolution))).toEqual(
       expected
     );
   });
@@ -29,7 +29,7 @@ describe("responsive return correct result", () => {
       )}
     `);
 
-    expect(trimSpace(responsive(property, values, resolutions))).toEqual(
+    expect(trimSpace(responsiveProperty(property, values, resolutions))).toEqual(
       expected
     );
   });
