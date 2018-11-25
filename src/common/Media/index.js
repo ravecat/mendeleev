@@ -1,4 +1,4 @@
 import responsive from "./responsive";
-import responsiveBlock from "./responsiveBlock";
+import responsiveProperty from "./responsiveProperty";
 
-export default { responsive, responsiveBlock };
+export default { responsive, responsiveProperty };

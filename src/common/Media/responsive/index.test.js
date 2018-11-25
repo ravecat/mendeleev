@@ -1,6 +1,6 @@
 import { css } from "styled-components";
-import trimSpace from "common/helpers/trimSpace";
-import responsiveBlock from "./responsiveBlock";
+import responsive from "./index";
+import trimSpace from "../helpers/trimSpace";
 
 const value = `
   width:auto;
@@ -9,7 +9,7 @@ const value = `
 `;
 const resolution = "1023";
 
-describe("responsiveBlock return correct result", () => {
+describe("responsive return correct result", () => {
   test("get individual value", () => {
     const expected = trimSpace(css`
       @media (max-width: ${resolution}px) {
@@ -17,6 +17,6 @@ describe("responsiveBlock return correct result", () => {
       }
     `);
 
-    expect(trimSpace(responsiveBlock(value, resolution))).toEqual(expected);
+    expect(trimSpace(responsive(value, resolution))).toEqual(expected);
   });
 });
