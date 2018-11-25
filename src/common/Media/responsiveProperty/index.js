@@ -1,6 +1,6 @@
 import { css } from "styled-components";
 
-const responsive = (property, values, resolutions) => {
+const responsiveProperty = (property, values, resolutions) => {
   const argsIsArray = Array.isArray(resolutions);
 
   return argsIsArray
@@ -19,4 +19,4 @@ const responsive = (property, values, resolutions) => {
     `;
 };
 
-export default responsive;
+export default responsiveProperty;
