@@ -7,10 +7,10 @@ const value = `
   height: 100%;
   padding: 10px;
 `;
-const resolution = "1023";
+const resolution = "1600";
 
 describe("responsive return correct result", () => {
-  test("get individual value", () => {
+  test("get value", () => {
     const expected = trimSpace(css`
       @media (max-width: ${resolution}px) {
         ${value};
@@ -18,5 +18,15 @@ describe("responsive return correct result", () => {
     `);
 
     expect(trimSpace(responsive(value, resolution))).toEqual(expected);
+  });
+
+  test("get value without responsive size", () => {
+    const expected = trimSpace(css`
+      @media (max-width: ${1023}px) {
+        ${value};
+      }
+    `);
+
+    expect(trimSpace(responsive(value))).toEqual(expected);
   });
 });
