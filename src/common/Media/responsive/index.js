@@ -3,14 +3,25 @@ import { css } from "styled-components";
 const DEFAULT_RESPONSIVE_RESOLUTION = 1023
 
 const responsive = (property, resolution) => {
-  //TODO Use rc-file for store variables
-  const res = resolution || process.env.RESPONSIVE || DEFAULT_RESPONSIVE_RESOLUTION
+  try {
+    //TODO Use rc-file for store variables
+    const envRes = process.env.RESPONSIVE
+    const resultRes = resolution || envRes || DEFAULT_RESPONSIVE_RESOLUTION
 
-  return css`
-    @media (max-width: ${res}px) {
-      ${property};
+    if (isNaN(Number(resultRes))) {
+      throw new Error('Responsive value is invalid. Must be a number')
     }
-  `;
+
+    return css`
+      @media (max-width: ${resultRes}px) {
+        ${property};
+      }
+    `;
+  } catch(err) {
+    // eslint-disable-next-line no-console
+    console.error(err)
+  }
+
 }
 
 export default responsive;

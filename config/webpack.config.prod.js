@@ -42,7 +42,7 @@ module.exports = {
       path.relative(paths.appSrc, info.absoluteResourcePath).replace(/\\/g, "/")
   },
   resolve: {
-    modules: ["node_modules", paths.appNodeModules].concat(
+    modules: [paths.appNodeModules, paths.appSrc].concat(
       process.env.NODE_PATH.split(path.delimiter).filter(Boolean)
     ),
     extensions: [".web.js", ".mjs", ".js", ".json", ".web.jsx", ".jsx"],
