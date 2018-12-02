@@ -9,7 +9,7 @@ const value = `
 `;
 const resolution = "1600";
 
-describe("responsive return correct result", () => {
+describe("Media responsive", () => {
   test("get value", () => {
     const expected = trimSpace(css`
       @media (max-width: ${resolution}px) {
