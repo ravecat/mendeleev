@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import Media from "common/Media";
-import "common/globalStyles";
 
 const App = () => (
   <Wrapper>
