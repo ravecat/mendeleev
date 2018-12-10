@@ -1,24 +1,24 @@
-import { injectGlobal } from "styled-components";
+import { createGlobalStyle } from 'styled-components'
 import { normalize } from "polished";
 
-injectGlobal`
+export default createGlobalStyle`
   ${normalize()};
-
-  [hidden] {
-    display: none !important;
-  }
-
-  html {
+  
+  body {
     height: 100%;
     color: black;
   }
   
-  * {
+  body * {
     margin: 0;
     line-height: 1.5;
     font-family: Roboto, sans-serif;
   }
-
+  
+  [hidden] {
+    display: none !important;
+  }
+  
   b,
   strong {
     font-weight: bold;
