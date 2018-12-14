@@ -37,6 +37,7 @@
     "eslint": "^5.7.0",
     "eslint-config-prettier": "^2.9.0",
     "eslint-config-react-app": "^2.1.0",
+    "eslint-config-standard": "^12.0.0",
     "eslint-plugin-flowtype": "^2.50.0",
     "eslint-plugin-import": "2.8.0",
     "eslint-plugin-jest": "^21.25.1",
@@ -69,6 +70,7 @@
     "lint:eslint:fix": "yarn lint:eslint --fix",
     "lint:stylelint": "stylelint 'src/**/*.{js,jsx,css}'",
     "lint:stylelint:fix": "yarn lint:stylelint --fix",
+    "lint": "yarn lint:eslint:fix && yarn lint:stylelint:fix",
     "prettier": "prettier --write 'src/**/*.{js,jsx,json,css,md}'",
     "prettier-watch": "onchange '**/*.js' -- prettier --write {{changed}}"
   },

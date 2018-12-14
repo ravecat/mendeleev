@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Media } from "styled-components-toolbox";
+import { Aside } from 'components'
 
 const App = () => (
   <Wrapper>
@@ -20,15 +21,6 @@ const Wrapper = styled.div`
   align-content: stretch;
   ${Media.responsive`
     flex-direction: column-reverse;
-  `};
-`;
-
-const Aside = styled.aside`
-  min-width: 50px;
-  background-color: #222;
-  ${Media.responsive`
-    width: 100%;
-    min-height: 50px;
   `};
 `;
 
