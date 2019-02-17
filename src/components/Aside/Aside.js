@@ -13,7 +13,6 @@ export default Aside
 const Wrapper = styled.aside`
   display: flex;
   flex-direction: column;
-  align-items: center;
   min-width: 50px;
   background-color: #222;
   ${Media.responsive`
