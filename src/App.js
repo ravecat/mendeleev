@@ -1,11 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 import { Media } from "styled-components-toolbox";
-import { Aside } from 'components'
+// TODO Enabel side menu after extend functionality 
+// import { Aside } from 'components'
 
 const App = () => (
   <Wrapper>
-    <Aside />
+    {/* TODO Enabel side menu after extend functionality */}
+    {/* <Aside /> */}
     <Article>
       <Title>Periodic table of chemical elements</Title>
     </Article>
