@@ -1,1 +1,1 @@
-// Requests to API here
+export { fetchElements } from './element'
