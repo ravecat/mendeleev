@@ -25,7 +25,7 @@ export default persistedState => {
   const enhancers = composeEnhancers(
     applyMiddleware(...middlewares)
   );
-
+  
   const store = createStore(
     reducers,
     persistedState,

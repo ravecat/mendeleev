@@ -2,17 +2,21 @@
   "name": "mendeleev",
   "version": "0.1.0",
   "dependencies": {
+    "axios": "^0.18.0",
     "dotenv": "6.0.0",
     "dotenv-expand": "4.2.0",
     "fs-extra": "7.0.1",
     "identity-obj-proxy": "3.0.0",
     "polished": "^1.9.3",
+    "prop-types": "^15.7.2",
+    "ramda": "^0.26.1",
     "react": "^16.8.2",
     "react-app-polyfill": "^0.2.1",
     "react-dev-utils": "^7.0.3",
     "react-dom": "^16.8.2",
     "react-redux": "^6.0.1",
     "react-router-dom": "^4.3.1",
+    "recompose": "^0.30.0",
     "redux": "^4.0.1",
     "redux-actions": "^2.6.4",
     "redux-saga": "^1.0.2",
@@ -93,8 +97,8 @@
   },
   "lint-staged": {
     "*.{js,jsx}": [
-      "eslint --fix",
-      "stylelint",
+      "yarn lint:eslint --fix",
+      "yarn lint:stylelint --fix",
       "git add"
     ]
   },

@@ -1,15 +1,15 @@
 import React from "react";
 import styled from "styled-components";
 import { Media } from "styled-components-toolbox";
-// TODO Enabel side menu after extend functionality 
-// import { Aside } from 'components'
+import { Route } from 'react-router-dom'
+import { Main } from 'components'
 
 const App = () => (
   <Wrapper>
     {/* TODO Enabel side menu after extend functionality */}
     {/* <Aside /> */}
     <Article>
-      <Title>Periodic table of chemical elements</Title>
+      <Route component={ Main } path="/" />
     </Article>
   </Wrapper>
 );
@@ -26,19 +26,17 @@ const Wrapper = styled.div`
   `};
 `;
 
-const Title = styled.div`
-  ${Media.responsive`
-    text-align: center;
-  `};
-`;
-
 const Article = styled.article`
-  width: 100%;
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
   padding: 10px 20px;
   background-color: #fff;
   ${Media.responsive`
-    width:auto;
-    height: 100%;
     padding: 10px;
   `};
 `;
+
+
+
+

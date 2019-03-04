@@ -38,7 +38,7 @@ const handleRequest = function* ({ payload, type }) {
 };
 
 const requestAction = ({ type }) =>
-  type.startsWith('REQUEST/') && !type.endsWith('_SUCCESS') && !type.endsWith('_FAILURE');
+  type.startsWith('FETCH/') && !type.endsWith('_SUCCESS') && !type.endsWith('_FAILURE');
 
 export default function* root() {
   yield takeEvery(requestAction, handleRequest);
