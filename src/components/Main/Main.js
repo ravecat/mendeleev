@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import styled from 'styled-components';
-import { Media } from 'styled-components-toolbox';
+import { Media, Header } from 'styled-components-toolbox';
 import Table from 'components/Table';
 
 const Main = () => (
@@ -12,7 +12,8 @@ const Main = () => (
 
 export default Main;
 
-const Title = styled.div`
+const Title = styled(Header)`
+  font-size: ${({ theme }) => theme.textSize.header};
   ${Media.responsive`
     text-align: center;
   `};
