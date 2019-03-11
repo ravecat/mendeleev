@@ -5,4 +5,14 @@ export default {
     textColor: '#FFFFFF',
     dividerColor: '#BDBDBD',
   },
+  textSize: {
+    header: '16px',
+    text: '14px',
+    secondaryText: '12px',
+    subText: '8px'
+  },
+  element: {
+    width: 76,
+    height: 50
+  }
 };

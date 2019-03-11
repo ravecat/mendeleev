@@ -9,22 +9,15 @@ const handleRequest = function* ({ payload, type }) {
   if (!method) {
     throw new Error(`API method "${methodName}" not found`);
   }
+  
+  yield put({ type: `${type}_REQUEST` });
 
-  const request = yield call(method, payload);
+  const { data, error } = yield call(method, payload);
 
-  if (request.error) {
-    const { message, response } = request;
-    const errorPayload = {};
-
-    if (request.system) {
-      errorPayload.message = message;
-    } else {
-      errorPayload.response = response;
-    }
-    
+  if (error) {
     yield put({
       type: `${type}_FAILURE`,
-      payload: errorPayload,
+      payload: error,
     });
     return;
   }
@@ -32,13 +25,16 @@ const handleRequest = function* ({ payload, type }) {
   yield put({
     type: `${type}_SUCCESS`,
     payload: {
-      response: request.response,
+      data
     },
   });
 };
 
-const requestAction = ({ type }) =>
-  type.startsWith('FETCH/') && !type.endsWith('_SUCCESS') && !type.endsWith('_FAILURE');
+const requestAction = ({ type }) => 
+  type.startsWith('FETCH/') &&
+  !type.endsWith('_REQUEST') &&
+  !type.endsWith('_SUCCESS') &&
+  !type.endsWith('_FAILURE');
 
 export default function* root() {
   yield takeEvery(requestAction, handleRequest);

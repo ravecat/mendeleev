@@ -1,3 +1,8 @@
-import { createAction } from 'redux-actions';
+import { createActionBundle } from './helpers';
 
-export const fetchElements = createAction('FETCH/ELEMENTS');
+export const {
+  fetch: fetchElements,
+  request: fetchElementsRequest,
+  success: fetchElementsSuccess,
+  failure: fetchElementsFailure,
+} = createActionBundle('FETCH/ELEMENTS');

@@ -1,6 +1,5 @@
-import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { lifecycle } from 'recompose';
+import { lifecycle, compose } from 'recompose';
 import { fetchElements } from 'store/actionCreators/element';
 import App from './App';
 

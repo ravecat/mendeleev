@@ -1,8 +1,7 @@
 import { branch, renderComponent } from 'recompose';
-import { isEmpty } from 'ramda';
 import StubOnEmptyData from './StubOnEmptyData';
 
-export default branch(
-  ({ data }) => isEmpty(data),
+export default isEmptyData => branch(
+  isEmptyData,
   renderComponent(StubOnEmptyData)
 );
