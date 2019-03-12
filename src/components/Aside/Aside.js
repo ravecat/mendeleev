@@ -1,14 +1,15 @@
-import React from "react";
-import styled from "styled-components";
-import { Media, Icon } from "styled-components-toolbox";
-import Molecule from './asset/molecule.svg'
+import React from 'react';
+import styled from 'styled-components';
+import { Media, Icon } from 'styled-components-toolbox';
+import Molecule from './asset/molecule.svg';
 
-const Aside = () =>
+const Aside = () => (
   <Wrapper>
     <MoleculeIcon asset={ Molecule } fill />
   </Wrapper>
+);
 
-export default Aside
+export default Aside;
 
 const Wrapper = styled.aside`
   display: flex;
@@ -35,4 +36,4 @@ const MoleculeIcon = styled(Icon)`
   :hover {
     cursor: pointer;
   }
-`
+`;

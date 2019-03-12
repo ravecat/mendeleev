@@ -3,8 +3,8 @@ import createSagaMiddleware from 'redux-saga';
 import sagaManager from './sagas/sagaManager';
 import reducers from './reducers';
 
-const isProduction = process.env.NODE_ENV === 'production'
-const isDevelopment = process.env.NODE_ENV === 'development'
+const isProduction = process.env.NODE_ENV === 'production';
+const isDevelopment = process.env.NODE_ENV === 'development';
 
 const isDevToolsExtension = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
 const composeEnhancers = isProduction ? compose : isDevToolsExtension || compose;
@@ -41,7 +41,7 @@ export default persistedState => {
         .then((nextReducer) =>{
           console.warn('Reducers got updated');
           store.replaceReducer(nextReducer);
-        })
+        });
     });
     // enable hot module reloading for sagas
     module.hot.accept(() => {
