@@ -83,11 +83,11 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
-    "lint:eslint": "eslint 'src/**/*.{js,jsx}'",
-    "lint:stylelint": "stylelint 'src/**/*.{js,jsx,css}'",
+    "lint:eslint": "eslint '**/*.{js,jsx,css,md}'",
+    "lint:stylelint": "stylelint '**/*.{js,jsx,css}'",
     "lint": "yarn lint:eslint && yarn lint:stylelint",
     "lint:fix": "yarn lint:eslint --fix && yarn lint:stylelint --fix",
-    "prettier": "prettier --write 'src/**/*.{js,jsx,json,css,md}'",
+    "prettier": "prettier --write '**/*.{js,jsx,json,css,md}'",
     "prettier-watch": "onchange '**/*.js' -- prettier --write {{changed}}"
   },
   "husky": {

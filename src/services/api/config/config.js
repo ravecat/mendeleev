@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { API_URL, API_PORT, API_PATH } from 'common/config'
+import { API_URL, API_PORT, API_PATH } from 'common/config';
 
 export const axiosInstance = axios.create({
   baseURL: `http://${API_URL}:${API_PORT}/${API_PATH}`,

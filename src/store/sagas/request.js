@@ -13,13 +13,13 @@ const handleRequest = function* ({ payload, type }) {
   const request = yield call(method, payload);
 
   if (request.error) {
-    const { message, response } = request
+    const { message, response } = request;
     const errorPayload = {};
 
     if (request.system) {
-      errorPayload.message = message
+      errorPayload.message = message;
     } else {
-      errorPayload.response = response
+      errorPayload.response = response;
     }
     
     yield put({

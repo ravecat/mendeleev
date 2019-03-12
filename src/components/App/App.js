@@ -1,8 +1,8 @@
-import React from "react";
-import styled from "styled-components";
-import { Media } from "styled-components-toolbox";
-import { Route } from 'react-router-dom'
-import { Main } from 'components'
+import React from 'react';
+import styled from 'styled-components';
+import { Media } from 'styled-components-toolbox';
+import { Route } from 'react-router-dom';
+import { Main } from 'components';
 
 const App = () => (
   <Wrapper>

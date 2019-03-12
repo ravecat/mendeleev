@@ -1,1 +1,1 @@
-export { fetchElements } from './element'
+export { fetchElements } from './element';

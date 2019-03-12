@@ -1,8 +1,8 @@
-import { compose } from 'redux'
+import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { lifecycle } from 'recompose'
-import { fetchElements } from 'store/actionCreators/element'
-import App from './App'
+import { lifecycle } from 'recompose';
+import { fetchElements } from 'store/actionCreators/element';
+import App from './App';
 
 export default compose(
   connect(
@@ -12,7 +12,7 @@ export default compose(
     componentDidMount() {
       const { fetchElements } = this.props;
       
-      fetchElements()
+      fetchElements();
     }
   })
-)(App)
+)(App);

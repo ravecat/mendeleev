@@ -1,6 +1,6 @@
-import { withProps, compose } from 'recompose'
+import { withProps, compose } from 'recompose';
 import withCheckData from 'common/hoc/withCheckData';
-import Table from './Table'
+import Table from './Table';
 
 export default compose(
   // TODO Use mocked data
@@ -8,4 +8,4 @@ export default compose(
     data
   })),
   withCheckData
-)(Table)
+)(Table);
