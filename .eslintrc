@@ -3,6 +3,7 @@
     "react-app",
     "plugin:jest/recommended",
     "eslint:recommended",
+    "plugin:react/recommended",
     "prettier"
   ],
   "plugins": [
