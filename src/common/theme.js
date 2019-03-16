@@ -12,9 +12,9 @@ export default {
     thirdText: '10px',
     subText: '8px'
   },
-  element: {
-    width: 76,
-    height: 50,
+  table: {
+    cellWidth: 76,
+    cellHeight: 50,
     color: {
       alkali: '#FEC590',
       alkaline: '#FFDF92',
