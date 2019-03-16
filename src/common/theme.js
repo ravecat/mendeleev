@@ -1,3 +1,4 @@
+import { TYPE } from 'common/constants';
 export default {
   colors: {
     primaryTextColor: '#212121',
@@ -16,17 +17,17 @@ export default {
     cellWidth: 76,
     cellHeight: 50,
     color: {
-      alkali: '#FEC590',
-      alkaline: '#FFDF92',
-      transition: '#ECFF91',
-      ['post-transition']: '#FEF991',
-      metalloids: '#91FF9E',
-      nonmetals: '#AB91FF',
-      halogens: '#F992FF',
-      noble: '#90DFFE',
-      unknown: '#C8C8C8',
-      lantanoids: '#D1FF92',
-      actinoids: '#B7FF91',
+      [TYPE.ALKALI]: '#FEC590',
+      [TYPE.ALKALINE]: '#FFDF92',
+      [TYPE.TRANSITION]: '#ECFF91',
+      [TYPE.POST_TRANSITION]: '#FEF991',
+      [TYPE.METALLOIDS]: '#91FF9E',
+      [TYPE.NONMETALS]: '#AB91FF',
+      [TYPE.HALOGENS]: '#F992FF',
+      [TYPE.NOBLE]: '#90DFFE',
+      [TYPE.UNKNOWN]: '#C8C8C8',
+      [TYPE.LANTANOIDS]: '#D1FF92',
+      [TYPE.ACTINOIDS]: '#B7FF91',
     }
   }
 };
