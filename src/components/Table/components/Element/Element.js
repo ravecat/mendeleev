@@ -2,9 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Text } from 'styled-components-toolbox';
+import { getElementLeftPosition, getElementTopPosition } from './service/position';
 
-const Element = ({ group, period, symbol, name, type, atomicNumber, atomicWeight  }) => (
-  <Wrapper group={ group } period={ period } type={ type }>
+const Table = ({ group, period, symbol, name, type, atomicNumber, atomicWeight }) => (
+  <Wrapper element={ { atomicNumber, group, period, type } }>
     <SymbolWrapper>
       <Symbol bold>{ symbol }</Symbol>
       <AtomicNumber bold>{ atomicNumber }</AtomicNumber>
@@ -18,17 +19,17 @@ const Element = ({ group, period, symbol, name, type, atomicNumber, atomicWeight
   </Wrapper>
 );
 
-Element.propTypes = {
+Table.propTypes = {
   group: PropTypes.string,
   period: PropTypes.string,
   symbol: PropTypes.string,
   type: PropTypes.string,
   name: PropTypes.string,
-  atomicNumber: PropTypes.string,
+  atomicNumber: PropTypes.number,
   atomicWeight: PropTypes.string,
 };
 
-export default Element;
+export default Table;
 
 const Wrapper = styled.div`
   display: flex;
@@ -36,12 +37,12 @@ const Wrapper = styled.div`
   justify-content: space-between;
   position: absolute;
   padding: 3px 5px;
-  width: ${({ theme: { element }}) => element.width}px;
-  height: ${({ theme: { element }}) => element.height}px;
-  top: ${({ period, theme: { element }}) => (element.height - 1)*(period - 1)}px;
-  left: ${({ theme: { element }, group }) => (element.width - 1)*(group - 1) }px;
+  width: ${({ theme }) => theme.table.cellWidth}px;
+  height: ${({ theme }) => theme.table.cellHeight}px;
+  top: ${({ theme, element }) => getElementTopPosition({ element, height: theme.table.cellHeight })}px;
+  left: ${({ theme, element }) => getElementLeftPosition({ element, width: theme.table.cellWidth })}px;
   line-height: 1;
-  background-color: ${({ type, theme: { element }}) => type ? element.color[type] : element.color.unknown};
+  background-color: ${({ element: { type }, theme: { table }}) => type ? table.color[type] : table.color.unknown};
   border: 1px solid ${({ theme }) => theme.colors.dividerColor};
 `;
 
