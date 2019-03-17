@@ -2,12 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 import { Media } from 'styled-components-toolbox';
 import { Route } from 'react-router-dom';
-import { Main } from 'components';
+import { Main, Aside } from 'components';
 
 const App = () => (
   <Wrapper>
-    {/* TODO Enabel side menu after extend functionality */}
-    {/* <Aside /> */}
+    <Aside />
     <Article>
       <Route component={ Main } path="/" />
     </Article>
@@ -23,14 +22,14 @@ const Wrapper = styled.div`
   align-content: stretch;
   ${Media.responsive`
     flex-direction: column-reverse;
-  `};
+  `}
 `;
 
 const Article = styled.article`
   display: flex;
   flex-grow: 1;
   flex-direction: column;
-  padding: 10px 20px;
+  padding: 15px 20px;
   background-color: #fff;
   ${Media.responsive`
     padding: 10px;
