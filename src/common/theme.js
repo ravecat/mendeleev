@@ -1,4 +1,5 @@
 import { TYPE } from 'common/constants';
+
 export default {
   colors: {
     primaryTextColor: '#212121',
