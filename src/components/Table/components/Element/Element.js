@@ -44,12 +44,17 @@ const Wrapper = styled.div`
   line-height: 1;
   background-color: ${({ element: { type }, theme: { table }}) => type ? table.color[type] : table.color.unknown};
   border: 1px solid ${({ theme }) => theme.colors.dividerColor};
+
+  :hover {
+    cursor: pointer;
+  }
 `;
 
 const SymbolWrapper = styled.div`
   display: flex;
   justify-content: space-between;
 `;
+
 const Symbol = styled(Text)`
   line-height: 1;
 `;
