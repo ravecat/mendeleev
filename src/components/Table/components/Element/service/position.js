@@ -1,4 +1,10 @@
+<<<<<<< HEAD
 import { ACTINIDES, LANTHANIDES } from 'common/constants';
+=======
+import { GROUPS } from 'common/constants';
+
+const { ACTINIDES, LANTHANIDES } = GROUPS;
+>>>>>>> Separate table views to different resolutions
 
 export const getElementLeftPosition = ({ element: { group, atomicNumber, type }, width }) => {
   const position = (group - 1) * (width - 1);
