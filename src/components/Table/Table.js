@@ -2,19 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Responsive from 'react-responsive';
-<<<<<<< HEAD
-import { MICRO, STANDART } from 'common/config';
-import Element from './components/Element';
-
-function Table({ elements, maxPeriod }) {
-=======
 import { RESPONSIVE } from 'common/config';
 import Element from './components/Element';
 
-function Table({ elements, maxPeriod }) {
+function Table({ elements, maxPeriod, ...rest }) {
   const [MICRO, STANDART] = RESPONSIVE;
 
->>>>>>> Separate table views to different resolutions
   return(
     <>
       <Responsive minWidth={ STANDART + 1 } >
