@@ -3,18 +3,18 @@ import { sortBy, prop, path, compose, map, gte, lte, values } from 'ramda';
 import { GROUPS } from 'common/constants';
 
 export const getElements = createSelector(
-  ({ elements }) => elements.data,
+  ({ elements } = {}) => elements.data,
   sortBy(prop('atomic_number'))
 );
 
 export const getMaxAtomicNumber = createSelector(
   getElements,
-  elements => elements.length
+  elements => prop('atomic_number', elements[elements.length - 1])
 );
 
 export const getMaxPeriod = createSelector(
-  [getElements, getMaxAtomicNumber],
-  (elements, maxAtomicNumber) => path(['classification', 'period', 'value'], elements[maxAtomicNumber])
+  getElements,
+  elements => path(['classification', 'period', 'value'], elements[elements.length - 1])
 );
 
 export const getBaseElements = createSelector(
@@ -38,7 +38,12 @@ export const getElementGroups = createSelector(
     const groups = map(
       ({ title, set: [start, end] }) => ({
         title,
-        set: elements.slice(start - 1, end)
+        set: elements.reduce(
+          (acc, { atomic_number }, idx, elements) => lte(atomic_number, end) && gte(atomic_number, start) ? 
+            [...acc, elements[idx]] :
+            [...acc],
+          []
+        )
       }),
       sortedGroups
     );
