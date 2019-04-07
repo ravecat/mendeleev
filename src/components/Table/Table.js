@@ -5,7 +5,7 @@ import Responsive from 'react-responsive';
 import { RESPONSIVE } from 'common/config';
 import Element from './components/Element';
 
-function Table({ elements, maxPeriod, ...rest }) {
+function Table({ elements, maxPeriod }) {
   const [MICRO, STANDART] = RESPONSIVE;
 
   return(
