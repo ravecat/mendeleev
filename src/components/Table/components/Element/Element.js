@@ -2,9 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Text } from 'styled-components-toolbox';
-import { getElementLeftPosition, getElementTopPosition } from './service/position';
 
-const Table = ({ group, period, symbol, name, type, atomicNumber, atomicWeight }) => (
+const Element = ({ group, period, symbol, name, type, atomicNumber, atomicWeight }) => (
   <Wrapper element={ { atomicNumber, group, period, type } }>
     <SymbolWrapper>
       <Symbol bold>{ symbol }</Symbol>
@@ -19,8 +18,8 @@ const Table = ({ group, period, symbol, name, type, atomicNumber, atomicWeight }
   </Wrapper>
 );
 
-Table.propTypes = {
-  group: PropTypes.string,
+Element.propTypes = {
+  group: PropTypes.number,
   period: PropTypes.string,
   symbol: PropTypes.string,
   type: PropTypes.string,
@@ -29,7 +28,7 @@ Table.propTypes = {
   atomicWeight: PropTypes.string,
 };
 
-export default Table;
+export default Element;
 
 const Wrapper = styled.div`
   display: flex;
@@ -39,11 +38,11 @@ const Wrapper = styled.div`
   padding: 3px 5px;
   width: ${({ theme }) => theme.table.cellWidth}px;
   height: ${({ theme }) => theme.table.cellHeight}px;
-  top: ${({ theme, element }) => getElementTopPosition({ element, height: theme.table.cellHeight })}px;
-  left: ${({ theme, element }) => getElementLeftPosition({ element, width: theme.table.cellWidth })}px;
+  top: ${({ theme: { table }, element: { period }}) => (period - 1) * (table.cellHeight  - 1)}px;
+  left: ${({ theme: { table }, element: { group }}) => (group > 12 ? group - 11 : group - 1) * (table.cellWidth - 1)}px;
   line-height: 1;
   background-color: ${({ element: { type }, theme: { table }}) => type ? table.color[type] : table.color.unknown};
-  border: 1px solid ${({ theme }) => theme.colors.dividerColor};
+  border: 1px solid ${({ theme: { colors }}) => colors.dividerColor};
 
   :hover {
     cursor: pointer;

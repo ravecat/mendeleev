@@ -5,20 +5,22 @@ import Responsive from 'react-responsive';
 import { RESPONSIVE } from 'common/config';
 import Element from './components/Element';
 
-function Table({ elements, maxPeriod }) {
+function Table({ elements, maxPeriod, baseElements }) {
   const [MICRO, STANDART] = RESPONSIVE;
 
   return(
     <>
       <Responsive minWidth={ STANDART + 1 } >
         <BaseTable maxPeriod={ maxPeriod }>
-          {elements.map(element => <Element key={ element.symbol } { ...element } />)}
+          {elements.map(element => <Element { ...element } key={ element.symbol }  />)}
         </BaseTable>
         <Groups>
         </Groups>
       </Responsive>
       <Responsive maxWidth={ STANDART } minWidth={ MICRO + 1 }>
-        <div>Short view</div>
+        <BaseTable maxPeriod={ maxPeriod }>
+          {baseElements.map(element => <Element { ...element } key={ element.symbol } />)}
+        </BaseTable>
       </Responsive>
       <Responsive maxWidth={ MICRO }>
         <div>Micro view</div>
@@ -29,6 +31,7 @@ function Table({ elements, maxPeriod }) {
 
 Table.propTypes = {
   elements: PropTypes.arrayOf(PropTypes.object),
+  baseElements: PropTypes.arrayOf(PropTypes.object),
   maxPeriod: PropTypes.string
 };
 
