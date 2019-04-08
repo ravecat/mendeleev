@@ -20,7 +20,7 @@ export const getMaxPeriod = createSelector(
 export const getBaseElements = createSelector(
   getElements,
   elements => elements.reduce(
-    (acc, { classification: { group: { value }}}, idx, elements) => lte(value, 2) || gte(value, 13) ? 
+    (acc, { classification: { group: { value }}}, idx, elements) => value && lte(value, 2) || gte(value, 13) ? 
       [...acc, elements[idx]] :
       [...acc],
     []

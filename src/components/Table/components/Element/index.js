@@ -7,7 +7,7 @@ export default withProps(({ classification: { group, period, type }, symbol, nam
   id: _id,
   atomicNumber: atomic_number,
   atomicWeight: String(atomic_weight),
-  group: group.value,
+  group: Number(group.value),
   type: type.value,
   period: period.value
 }))(Element);
