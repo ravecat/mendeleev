@@ -3,24 +3,33 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Responsive from 'react-responsive';
 import { RESPONSIVE } from 'common/config';
-import Element from './components/Element';
+import { BaseElement } from './components/Element';
+import { CommonElement } from './components/Element';
 
-function Table({ elements, maxPeriod, baseElements }) {
+function Table({ elements, maxPeriod, baseElements, groups }) {
   const [MICRO, STANDART] = RESPONSIVE;
 
   return(
     <>
       <Responsive minWidth={ STANDART + 1 } >
         <BaseTable maxPeriod={ maxPeriod }>
-          {elements.map(element => <Element { ...element } key={ element.symbol }  />)}
+          {/* {elements.map(element => <Element { ...element } key={ element.symbol } />)} */}
         </BaseTable>
-        <Groups>
-        </Groups>
       </Responsive>
       <Responsive maxWidth={ STANDART } minWidth={ MICRO + 1 }>
         <BaseTable maxPeriod={ maxPeriod }>
-          {baseElements.map(element => <Element { ...element } key={ element.symbol } />)}
+          {baseElements.map(element => <BaseElement { ...element } key={ element.symbol } />)}
         </BaseTable>
+        <Groups>
+          {
+            groups.map(({ title, set }) => (
+              <Group key={ title }>
+                <Title>{title}</Title>
+                <Set>{set.map(element => <CommonElement { ...element } key={ element.symbol } />)}</Set>
+              </Group>
+            ))
+          }
+        </Groups>
       </Responsive>
       <Responsive maxWidth={ MICRO }>
         <div>Micro view</div>
@@ -32,6 +41,7 @@ function Table({ elements, maxPeriod, baseElements }) {
 Table.propTypes = {
   elements: PropTypes.arrayOf(PropTypes.object),
   baseElements: PropTypes.arrayOf(PropTypes.object),
+  groups: PropTypes.arrayOf(PropTypes.object),
   maxPeriod: PropTypes.string
 };
 
@@ -39,9 +49,23 @@ export default Table;
 
 const BaseTable = styled.div`
   position: relative;
-  height: ${({ theme, maxPeriod }) => maxPeriod * theme.table.cellHeight}px;
+  min-height: ${({ theme, maxPeriod }) => maxPeriod * theme.table.cellHeight}px;
+  margin-bottom: 20px;
 `;
 
 const Groups = styled.div`
-  position: relative;
+  display: flex;
+  flex-direction: column;
+`;
+
+const Group = styled.div`
+  display: flex;
+`;
+
+const Title = styled.div`
+  width: 150px;
+`;
+
+const Set = styled.div`
+  display: flex;
 `;
