@@ -13,6 +13,7 @@ function Table({ elements, maxPeriod, baseElements, groups }) {
     <>
       <Responsive minWidth={ STANDART + 1 } >
         <BaseTable maxPeriod={ maxPeriod }>
+          {/* TODO Update table with new element cell */}
           {/* {elements.map(element => <Element { ...element } key={ element.symbol } />)} */}
         </BaseTable>
       </Responsive>
