@@ -11,7 +11,6 @@ const mapStateToProps = state => ({
   groups: getElementGroups(state),
 });
 
-//TODO Separate elements calculation to different view
 export default compose(
   connect(mapStateToProps),
 )(Table);
