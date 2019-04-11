@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect';
-import { sortBy, prop, path, compose, map, gte, lte, values } from 'ramda';
+import { sortBy, prop, path, compose, map, gte, lte, values, filter } from 'ramda';
 import { GROUPS } from 'common/constants';
 
 export const getElements = createSelector(
@@ -28,13 +28,16 @@ export const getBaseElements = createSelector(
 );
 
 export const getElementGroups = createSelector(
-  getElements,
-  elements => {
+  [getElements, getMaxAtomicNumber],
+  (elements, maxAtomicNumber) => {
+    const startAtomicNumberiInSet = compose(prop(0), prop('set'));
+    
     const sortedGroups = compose(
-      sortBy(compose(prop(0), prop('set'))),
+      sortBy(startAtomicNumberiInSet),
+      filter(({ set: [start] }) => lte(start, maxAtomicNumber)),
       values
     )(GROUPS);
-
+    
     const groups = map(
       ({ title, set: [start, end] }) => ({
         title,

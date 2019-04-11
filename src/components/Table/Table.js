@@ -21,16 +21,14 @@ function Table({ elements, maxPeriod, baseElements, groups }) {
         <BaseTable maxPeriod={ maxPeriod }>
           {baseElements.map(element => <BaseElement { ...element } key={ element.symbol } />)}
         </BaseTable>
-        <Groups>
-          {
-            groups.map(({ title, set }) => (
-              <Group key={ title }>
-                <Title>{title}</Title>
-                <Set>{set.map(element => <CommonElement { ...element } key={ element.symbol } />)}</Set>
-              </Group>
-            ))
-          }
-        </Groups>
+        {
+          groups.map(({ title, set }) => (
+            <Group key={ title }>
+              <Title>{title}</Title>
+              <Set>{set.map(element => <CommonElement { ...element } key={ element.symbol } />)}</Set>
+            </Group>
+          ))
+        }
       </Responsive>
       <Responsive maxWidth={ MICRO }>
         <div>Micro view</div>
@@ -54,17 +52,13 @@ const BaseTable = styled.div`
   margin-bottom: 20px;
 `;
 
-const Groups = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
 const Group = styled.div`
-  display: flex;
+  margin-bottom: 10px;
 `;
 
 const Title = styled.div`
   width: 150px;
+  font-size: ${({ theme }) => theme.textSize.text};
 `;
 
 const Set = styled.div`
