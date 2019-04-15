@@ -29,7 +29,13 @@ const Article = styled.article`
   display: flex;
   flex-grow: 1;
   flex-direction: column;
+  position: absolute;
+  top: 0;
+  left: 40px;
+  right: 0;
+  bottom: 0;
   padding: 15px 20px;
+  overflow: auto;
   background-color: #fff;
   ${Media.responsive`
     padding: 10px;
