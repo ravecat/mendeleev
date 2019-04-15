@@ -3,12 +3,23 @@ import { normalize } from 'polished';
 
 export default createGlobalStyle`
   ${normalize()};
+
+  html {
+    height: 100%;
+    min-height: 100%;
+  }
   
   body {
     height: 100%;
+    min-height: 100%;
     color: black;
   }
   
+  #root {
+    height: 100%;
+    min-height: 100%;
+  }
+
   body * {
     margin: 0;
     box-sizing: border-box;
