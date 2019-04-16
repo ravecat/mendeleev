@@ -5,16 +5,16 @@ import Responsive from 'react-responsive';
 import { RESPONSIVE } from 'common/config';
 import { BaseElement } from './components/Element';
 import { CommonElement } from './components/Element';
+import { StandartElement } from './components/Element';
 
-function Table({ elements, maxPeriod, baseElements, groups, periods }) {
+function Table({ elements, maxPeriod, baseElements, groups, periods, transElements }) {
   const [MICRO, STANDART] = RESPONSIVE;
-
+  console.log(transElements)
   return(
     <>
       <Responsive minWidth={ STANDART + 1 } >
         <BaseTable maxPeriod={ maxPeriod }>
-          {/* TODO Update table with new element cell */}
-          {/* {elements.map(element => <Element { ...element } key={ element.symbol } />)} */}
+          {elements.map(element => <StandartElement { ...element } key={ element.symbol } />)}
         </BaseTable>
       </Responsive>
       <Responsive maxWidth={ STANDART } minWidth={ MICRO + 1 }>

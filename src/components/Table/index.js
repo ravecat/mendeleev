@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { compose } from 'ramda';
-import { getElements, getMaxAtomicNumber, getMaxPeriod, getBaseElements, getElementGroups, getPeriods } from 'store/selectors/elements';
+import { getElements, getMaxAtomicNumber, getMaxPeriod, getBaseElements, getElementGroups, getPeriods, getTransElement } from 'store/selectors/elements';
 import Table from './Table';
 
 const mapStateToProps = state => ({
@@ -9,6 +9,7 @@ const mapStateToProps = state => ({
   maxAtomicNumber: getMaxAtomicNumber(state),
   maxPeriod: getMaxPeriod(state),
   baseElements: getBaseElements(state),
+  transElements: getTransElement(state),
   groups: getElementGroups(state),
 });
 
