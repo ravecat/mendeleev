@@ -17,16 +17,21 @@ export default Aside;
 
 const Wrapper = styled.aside`
   display: flex;
+  position: fixed;
+  bottom: 0;
+  height: 100%;
   flex-direction: column;
   padding: 15px 0;
   align-items: center;
-  min-width: 40px;
+  width: 40px;
   background-color: ${({ theme }) => theme.colors.primaryTextColor};
   ${Media.responsive`
+    position: fixed;
+    left: 0;
+    width: 100%;
+    height: 50px;
     flex-direction: row;
     justify-content: space-evenly;
-    width: 100%;
-    min-height: 40px;
   `};
 `;
 
