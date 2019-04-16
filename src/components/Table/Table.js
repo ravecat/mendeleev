@@ -6,7 +6,7 @@ import { RESPONSIVE } from 'common/config';
 import { BaseElement } from './components/Element';
 import { CommonElement } from './components/Element';
 
-function Table({ elements, maxPeriod, baseElements, groups }) {
+function Table({ elements, maxPeriod, baseElements, groups, periods }) {
   const [MICRO, STANDART] = RESPONSIVE;
 
   return(
@@ -31,7 +31,15 @@ function Table({ elements, maxPeriod, baseElements, groups }) {
         }
       </Responsive>
       <Responsive maxWidth={ MICRO }>
-        <div>Micro view</div>
+        {
+          periods.map((period, index) => (
+            <Period key={ index }>
+              {
+                period.map(element => <CommonElement { ...element } key={ element.symbol } />)
+              }
+            </Period>
+          ))
+        }
       </Responsive>
     </>
   );
@@ -41,6 +49,7 @@ Table.propTypes = {
   elements: PropTypes.arrayOf(PropTypes.object),
   baseElements: PropTypes.arrayOf(PropTypes.object),
   groups: PropTypes.arrayOf(PropTypes.object),
+  periods: PropTypes.arrayOf(PropTypes.array),
   maxPeriod: PropTypes.string
 };
 
@@ -54,6 +63,12 @@ const BaseTable = styled.div`
 
 const Group = styled.div`
   margin-bottom: 10px;
+`;
+
+const Period = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
 `;
 
 const Title = styled.div`

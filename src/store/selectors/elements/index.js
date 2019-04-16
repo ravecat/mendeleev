@@ -1,10 +1,15 @@
 import { createSelector } from 'reselect';
-import { sortBy, prop, path, compose, map, gte, lte, values, filter } from 'ramda';
+import { sortBy, prop, path, compose, map, gte, lte, values, filter, eqBy, groupWith } from 'ramda';
 import { GROUPS } from 'common/constants';
 
 export const getElements = createSelector(
   ({ elements } = {}) => elements.data,
   sortBy(prop('atomic_number'))
+);
+
+export const getPeriods = createSelector(
+  getElements,
+  groupWith((a, b) => eqBy(path(['classification', 'period', 'value']), a, b))
 );
 
 export const getMaxAtomicNumber = createSelector(
