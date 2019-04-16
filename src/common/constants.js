@@ -12,6 +12,14 @@ export const TYPE = {
   ACTINOIDS:'actinoids'
 };
 
+export const BLOCK = {
+  s: 's',
+  p: 'p',
+  d: 'd',
+  f: 'f',
+  g: 'g'
+};
+
 export const GROUPS = {
   SCANDIUM: {
     title: 'Scandium group',

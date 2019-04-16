@@ -1,25 +1,30 @@
 import { createSelector } from 'reselect';
-import { sortBy, prop, path, compose, map, gte, lte, values, filter, eqBy, groupWith } from 'ramda';
-import { GROUPS } from 'common/constants';
+import { sortBy, prop, path, compose, map, gte, lte, values, filter, eqBy, propEq, anyPass, groupWith, pathOr, last } from 'ramda';
+import { GROUPS, BLOCK } from 'common/constants';
 
 export const getElements = createSelector(
-  ({ elements } = {}) => elements.data,
+  pathOr([], ['elements', 'data']),
   sortBy(prop('atomic_number'))
+);
+
+export const getLastElement = createSelector(
+  getElements,
+  last
+);
+
+export const getMaxAtomicNumber = createSelector(
+  getLastElement,
+  prop('atomic_number')
+);
+
+export const getMaxPeriod = createSelector(
+  getLastElement,
+  path(['classification', 'period', 'value'])
 );
 
 export const getPeriods = createSelector(
   getElements,
   groupWith((a, b) => eqBy(path(['classification', 'period', 'value']), a, b))
-);
-
-export const getMaxAtomicNumber = createSelector(
-  getElements,
-  elements => prop('atomic_number', elements[elements.length - 1])
-);
-
-export const getMaxPeriod = createSelector(
-  getElements,
-  elements => path(['classification', 'period', 'value'], elements[elements.length - 1])
 );
 
 export const getBaseElements = createSelector(
@@ -30,6 +35,14 @@ export const getBaseElements = createSelector(
       [...acc],
     []
   )
+);
+
+export const getTransElement = createSelector(
+  getElements,
+  filter(compose(
+    anyPass([propEq(BLOCK.f), propEq(BLOCK.g)]),
+    path(['classification', 'period', 'value'])
+  ))
 );
 
 export const getElementGroups = createSelector(
