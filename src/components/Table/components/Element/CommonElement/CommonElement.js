@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Text } from 'styled-components-toolbox';
+import { Text, Media } from 'styled-components-toolbox';
 
-const CommonElement = ({ className, symbol, name, type, atomicNumber, atomicWeight }) => (
-  <Wrapper className={ className } element={ { atomicNumber, type } }>
+const CommonElement = ({ symbol, name, type, atomicNumber, atomicWeight }) => (
+  <Wrapper element={ { atomicNumber, type } }>
     <SymbolWrapper>
       <Symbol bold>{ symbol }</Symbol>
       <AtomicNumber bold>{ atomicNumber }</AtomicNumber>
@@ -34,11 +34,15 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: space-between;
   padding: 3px 5px;
+  min-width: ${({ theme }) => theme.table.cellWidth}px;
   width: ${({ theme }) => theme.table.cellWidth}px;
   height: ${({ theme }) => theme.table.cellHeight}px;
   line-height: 1;
   background-color: ${({ element: { type }, theme: { table }}) => type ? table.color[type] : table.color.unknown};
   border: 1px solid ${({ theme: { colors }}) => colors.dividerColor};
+  ${Media.responsive`
+    margin-left: -1px;
+  `};
 
   :hover {
     cursor: pointer;
