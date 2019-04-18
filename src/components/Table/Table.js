@@ -3,19 +3,27 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Responsive from 'react-responsive';
 import { RESPONSIVE } from 'common/config';
-import { BaseElement } from './components/Element';
-import { CommonElement } from './components/Element';
-import { StandartElement } from './components/Element';
+import { BaseElement, CommonElement, StandartElement } from 'components/Element';
 
-function Table({ elements, maxPeriod, baseElements, groups, periods, transElements }) {
+function Table({ maxPeriod, baseElements, groups, periods, transElements, nonTransElements }) {
   const [MICRO, STANDART] = RESPONSIVE;
-  console.log(transElements)
+
   return(
     <>
       <Responsive minWidth={ STANDART + 1 } >
         <BaseTable maxPeriod={ maxPeriod }>
-          {elements.map(element => <StandartElement { ...element } key={ element.symbol } />)}
+          {nonTransElements.map(element => <StandartElement { ...element } key={ element.symbol } />)}
         </BaseTable>
+        <Group>
+          {
+            transElements.map(({ title, set }) => (
+              <Group key={ title }>
+                <Title>{title}</Title>
+                <Set>{set.map(element => <CommonElement { ...element } key={ element.symbol } />)}</Set>
+              </Group>
+            ))
+          }
+        </Group>
       </Responsive>
       <Responsive maxWidth={ STANDART } minWidth={ MICRO + 1 }>
         <BaseTable maxPeriod={ maxPeriod }>
@@ -46,7 +54,8 @@ function Table({ elements, maxPeriod, baseElements, groups, periods, transElemen
 }
 
 Table.propTypes = {
-  elements: PropTypes.arrayOf(PropTypes.object),
+  transElements: PropTypes.arrayOf(PropTypes.object),
+  nonTransElements: PropTypes.arrayOf(PropTypes.object),
   baseElements: PropTypes.arrayOf(PropTypes.object),
   groups: PropTypes.arrayOf(PropTypes.object),
   periods: PropTypes.arrayOf(PropTypes.array),
