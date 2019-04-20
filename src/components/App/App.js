@@ -8,7 +8,7 @@ const App = () => (
   <>
     <Aside />
     <Article>
-      <Route component={ Main } path="/" />
+      <Route component={Main} path="/" />
     </Article>
   </>
 );
@@ -30,7 +30,3 @@ const Article = styled.article`
     bottom: 50px;
   `};
 `;
-
-
-
-

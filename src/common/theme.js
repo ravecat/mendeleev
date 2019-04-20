@@ -5,7 +5,7 @@ export default {
     primaryTextColor: '#212121',
     secondaryTextColor: '#757575',
     textColor: '#FFFFFF',
-    dividerColor: '#BDBDBD',
+    dividerColor: '#BDBDBD'
   },
   textSize: {
     header: '16px',
@@ -28,7 +28,7 @@ export default {
       [TYPE.NOBLE]: '#90DFFE',
       [TYPE.UNKNOWN]: '#C8C8C8',
       [TYPE.LANTANOIDS]: '#D1FF92',
-      [TYPE.ACTINOIDS]: '#B7FF91',
+      [TYPE.ACTINOIDS]: '#B7FF91'
     }
   }
 };

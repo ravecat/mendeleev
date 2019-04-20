@@ -7,9 +7,9 @@ import List from './asset/list.svg';
 
 const Aside = () => (
   <Wrapper>
-    <CustomIcon asset={ Grid } pointer />
-    <CustomIcon asset={ List } pointer />
-    <CustomIcon asset={ Atom } pointer />
+    <CustomIcon asset={Grid} pointer />
+    <CustomIcon asset={List} pointer />
+    <CustomIcon asset={Atom} pointer />
   </Wrapper>
 );
 

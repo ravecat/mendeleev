@@ -23,7 +23,7 @@ const SagaManager = {
 
   cancelSagas(store) {
     store.dispatch(hmrCancelSagas());
-  },
+  }
 };
 
 export default SagaManager;

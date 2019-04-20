@@ -5,12 +5,13 @@ import App from './App';
 
 export default compose(
   connect(
-    null, { fetchElements }
+    null,
+    { fetchElements }
   ),
   lifecycle({
     componentDidMount() {
       const { fetchElements } = this.props;
-      
+
       fetchElements();
     }
   })

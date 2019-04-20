@@ -7,5 +7,5 @@ export default withProps(({ classification: { type }, symbol, name, _id, atomic_
   id: _id,
   atomicNumber: atomic_number,
   atomicWeight: String(atomic_weight),
-  type: type.value,
+  type: type.value
 }))(CommonElement);

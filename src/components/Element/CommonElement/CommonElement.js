@@ -4,17 +4,13 @@ import styled from 'styled-components';
 import { Text, Media } from 'styled-components-toolbox';
 
 const CommonElement = ({ symbol, name, type, atomicNumber, atomicWeight }) => (
-  <Wrapper element={ { atomicNumber, type } }>
+  <Wrapper element={{ atomicNumber, type }}>
     <SymbolWrapper>
-      <Symbol bold>{ symbol }</Symbol>
-      <AtomicNumber bold>{ atomicNumber }</AtomicNumber>
+      <Symbol bold>{symbol}</Symbol>
+      <AtomicNumber bold>{atomicNumber}</AtomicNumber>
     </SymbolWrapper>
-    <Name>
-      { name }
-    </Name>
-    <Weight>
-      { atomicWeight }
-    </Weight>
+    <Name>{name}</Name>
+    <Weight>{atomicWeight}</Weight>
   </Wrapper>
 );
 
@@ -24,7 +20,7 @@ CommonElement.propTypes = {
   type: PropTypes.string,
   name: PropTypes.string,
   atomicNumber: PropTypes.number,
-  atomicWeight: PropTypes.string,
+  atomicWeight: PropTypes.string
 };
 
 export default CommonElement;
@@ -38,8 +34,8 @@ const Wrapper = styled.div`
   width: ${({ theme }) => theme.table.cellWidth}px;
   height: ${({ theme }) => theme.table.cellHeight}px;
   line-height: 1;
-  background-color: ${({ element: { type }, theme: { table }}) => type ? table.color[type] : table.color.unknown};
-  border: 1px solid ${({ theme: { colors }}) => colors.dividerColor};
+  background-color: ${({ element: { type }, theme: { table } }) => (type ? table.color[type] : table.color.unknown)};
+  border: 1px solid ${({ theme: { colors } }) => colors.dividerColor};
   ${Media.responsive`
     margin-left: -1px;
   `};
@@ -59,7 +55,7 @@ const Symbol = styled(Text)`
 `;
 
 const AtomicNumber = styled(Symbol)`
-  font-size: ${({ theme }) => theme.textSize.secondaryText}
+  font-size: ${({ theme }) => theme.textSize.secondaryText};
 `;
 
 const Name = styled(Text)`
