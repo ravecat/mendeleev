@@ -8,8 +8,8 @@ function StandartElement(props) {
   const period = path(['classification', 'period', 'value'], props);
 
   return (
-    <Wrapper group={ group } period={ period } { ...props }>
-      <CommonElement { ...props } />
+    <Wrapper group={group} period={period} {...props}>
+      <CommonElement {...props} />
     </Wrapper>
   );
 }

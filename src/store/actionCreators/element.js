@@ -4,5 +4,5 @@ export const {
   fetch: fetchElements,
   request: fetchElementsRequest,
   success: fetchElementsSuccess,
-  failure: fetchElementsFailure,
+  failure: fetchElementsFailure
 } = createActionBundle('FETCH/ELEMENTS');

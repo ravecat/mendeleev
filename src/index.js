@@ -11,8 +11,8 @@ import App from 'components/App';
 const store = createStore();
 
 ReactDOM.render(
-  <ThemeProvider theme={ theme }>
-    <Provider store={ store }>
+  <ThemeProvider theme={theme}>
+    <Provider store={store}>
       <GlobalStyle />
       <Router>
         <App />

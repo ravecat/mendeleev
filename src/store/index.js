@@ -13,32 +13,27 @@ export default persistedState => {
   const sagaMiddleware = createSagaMiddleware();
   const middlewares = [sagaMiddleware];
 
-  if ( isDevelopment && !isDevToolsExtension) {
+  if (isDevelopment && !isDevToolsExtension) {
     const { createLogger } = require('redux-logger');
     const logger = createLogger({
-      collapsed: true,
+      collapsed: true
     });
 
     middlewares.push(logger);
   }
 
-  const enhancers = composeEnhancers(
-    applyMiddleware(...middlewares)
-  );
-  
-  const store = createStore(
-    reducers,
-    persistedState,
-    enhancers
-  );
+  const enhancers = composeEnhancers(applyMiddleware(...middlewares));
+
+  const store = createStore(reducers, persistedState, enhancers);
 
   sagaManager.startSagas(sagaMiddleware);
 
   if (module.hot) {
     // enable hot module reloading for reducers
     module.hot.accept('./reducers', () => {
-      require('./reducers').default()
-        .then((nextReducer) =>{
+      require('./reducers')
+        .default()
+        .then(nextReducer => {
           console.warn('Reducers got updated');
           store.replaceReducer(nextReducer);
         });
