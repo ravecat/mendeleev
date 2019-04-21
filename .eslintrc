@@ -30,8 +30,6 @@
     "describe": true
   },
   "rules": {
-    "semi": [2, "always"],
-    "quotes": [2, "single"],
     "eol-last": [2, "always"],
     "no-console": [2, { "allow": ["warn", "error"] }],
     "no-unused-vars": [2, {

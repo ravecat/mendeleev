@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Text, Media } from 'styled-components-toolbox';
+import { Text } from 'styled-components-toolbox';
 
 const CommonElement = ({ symbol, name, type, atomicNumber, atomicWeight }) => (
   <Wrapper element={{ atomicNumber, type }}>
@@ -29,6 +29,7 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  margin-left: -1px;
   padding: 3px 5px;
   min-width: ${({ theme }) => theme.table.cellWidth}px;
   width: ${({ theme }) => theme.table.cellWidth}px;
@@ -36,9 +37,6 @@ const Wrapper = styled.div`
   line-height: 1;
   background-color: ${({ element: { type }, theme: { table } }) => (type ? table.color[type] : table.color.unknown)};
   border: 1px solid ${({ theme: { colors } }) => colors.dividerColor};
-  ${Media.responsive`
-    margin-left: -1px;
-  `};
 
   :hover {
     cursor: pointer;

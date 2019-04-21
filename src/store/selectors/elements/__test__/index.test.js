@@ -1,7 +1,48 @@
 import state from './state.mock';
-import { getMaxAtomicNumber, getMaxPeriod, getBaseElements, getElementGroups } from '../index';
+import {
+  getMaxAtomicNumber,
+  getMaxPeriod,
+  getBaseElements,
+  getElementGroups,
+  getPeriodValue,
+  getBlockValue,
+  isTransElement,
+  isBaseElement
+} from '../index';
 
 describe('selector/elements', () => {
+  let element;
+
+  beforeEach(() => {
+    element = state.elements.data[0];
+  });
+
+  it('get period value', () => {
+    const received = getPeriodValue(element);
+
+    expect(received).toEqual('2');
+  });
+
+  it('is transition element', () => {
+    const received = isTransElement(element);
+
+    expect(received).toEqual(false);
+  });
+
+  it('is base element', () => {
+    const received = isBaseElement(element);
+
+    expect(received).toEqual(true);
+  });
+
+  it('get block value', () => {
+    const received = getBlockValue(element);
+
+    const mockedBlock = 's';
+
+    expect(received).toEqual(mockedBlock);
+  });
+
   it('get max atomic number', () => {
     const received = getMaxAtomicNumber(state);
 
@@ -28,7 +69,7 @@ describe('selector/elements', () => {
 
   it('get elements groups', () => {
     // Get 110 element data from mocked state
-    const received = getElementGroups(state)[5].set[0]['atomic_number'];
+    const received = getElementGroups(state)[0].set[0]['atomic_number'];
 
     const mockedAtomicMassFromSpecificGroup = 110;
 
