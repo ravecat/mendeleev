@@ -1,3 +1,4 @@
+// TODO Mocked state with element data (Helium, Lithium, Beryllium, Darmstadtium)
 export default {
   elements: {
     data: [

@@ -48,11 +48,11 @@ function Table({ maxPeriod, baseElements, groups, periods, transElements, nonTra
       </Responsive>
       <Responsive maxWidth={MICRO}>
         {periods.map((period, index) => (
-          <Period key={index}>
+          <Set key={index}>
             {period.map(element => (
               <CommonElement {...element} key={element.symbol} />
             ))}
-          </Period>
+          </Set>
         ))}
       </Responsive>
     </>
@@ -80,7 +80,7 @@ const Group = styled.div`
   margin-bottom: 10px;
 `;
 
-const Period = styled.div`
+const Set = styled.div`
   display: flex;
   flex-wrap: wrap;
   margin-bottom: 20px;
@@ -89,8 +89,4 @@ const Period = styled.div`
 const Title = styled.div`
   width: 150px;
   font-size: ${({ theme }) => theme.textSize.text};
-`;
-
-const Set = styled.div`
-  display: flex;
 `;
