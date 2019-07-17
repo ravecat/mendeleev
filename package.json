@@ -29,6 +29,11 @@
   },
   "devDependencies": {
     "@babel/core": "7.2.2",
+    "@commitlint/cli": "^8.0.0",
+    "@commitlint/config-angular": "^8.0.0",
+    "@semantic-release/changelog": "^3.0.4",
+    "@semantic-release/git": "^7.0.16",
+    "@semantic-release/gitlab": "^3.1.7",
     "@svgr/webpack": "4.1.0",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "9.0.0",
@@ -41,6 +46,7 @@
     "case-sensitive-paths-webpack-plugin": "2.2.0",
     "chalk": "1.1.3",
     "css-loader": "1.0.0",
+    "cz-customizable": "^6.2.0",
     "eslint": "5.12.0",
     "eslint-config-prettier": "^4.1.0",
     "eslint-config-react-app": "^3.0.7",
@@ -72,6 +78,7 @@
     "react-test-renderer": "^16.5.1",
     "redux-logger": "^3.0.6",
     "sass-loader": "7.1.0",
+    "semantic-release": "^15.13.18",
     "style-loader": "0.23.1",
     "stylelint": "^9.3.0",
     "stylelint-config-standard": "^18.2.0",
@@ -94,12 +101,12 @@
     "lint:stylelint": "stylelint '**/*.{js,jsx,css}'",
     "lint": "yarn lint:eslint && yarn lint:stylelint",
     "lint:fix": "yarn lint:eslint --fix && yarn lint:stylelint --fix",
-    "prettier": "prettier --write '**/*.{js,jsx,json,css,md}'",
-    "prettier-watch": "onchange '**/*.js' -- prettier --write {{changed}}"
+    "release:debug": "semantic-release --debug"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
   "lint-staged": {
@@ -114,5 +121,13 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-customizable"
+    },
+    "cz-customizable": {
+      "config": "./commitizen.config.js"
+    }
+  }
 }
