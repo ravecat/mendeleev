@@ -1,7 +1,6 @@
 module.exports = {
   // Set a required branch value for debugging mode
-  // branch: 'master',
-  branch: 'ci/add-semantic-release',
+  branch: 'master',
   tagFormat: '${version}',
   preset: 'angular',
   plugins: [
