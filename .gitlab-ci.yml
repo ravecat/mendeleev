@@ -4,7 +4,7 @@ stages:
   - build
   - deploy
 
-image: node:10.13-alpine
+image: docker:stable
 
 variables:
   IMAGE_NAME: ravecat/mendeleev
@@ -15,6 +15,7 @@ cache:
   - node_modules/
 
 test:
+  image: node:10.13-alpine
   stage: test
   tags:
     - docker
@@ -30,6 +31,7 @@ test:
     - yarn test
 
 publish:
+  image: node:10.13-alpine
   stage: release
   tags:
     - docker
