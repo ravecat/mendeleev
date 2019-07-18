@@ -1,0 +1,74 @@
+stages:
+  - test
+  - release
+  - build
+  - deploy
+
+image: node:10.13-alpine
+
+variables:
+  IMAGE_NAME: ravecat/mendeleev
+  APP_CONTAINER: mendeleev
+
+cache:
+  paths:
+  - node_modules/
+
+test:
+  stage: test
+  tags:
+    - docker
+  dependencies: []
+  artifacts:
+    paths:
+      - node_modules/
+    expire_in: 1h
+  script:
+    - npm i -g yarn 
+    - yarn
+    - yarn lint
+    - yarn test
+
+publish:
+  stage: release
+  tags:
+    - docker
+  only:
+    - master
+  dependencies:
+    - test
+  script:
+    - npm i -g yarn 
+    - apk add --no-cache git
+    - GITLAB_TOKEN=$GITLAB_TOKEN yarn semantic-release
+
+build:
+  stage: build
+  tags:
+    - docker
+  only:
+    - master
+  script: 
+    - echo "$(echo "$REGISTRY_PASSWORD" | base64 -d)" | docker login -u "$(echo "$REGISTRY_USER" | base64 -d)" --password-stdin
+    - docker build -t $IMAGE_NAME .
+    - docker push $IMAGE_NAME
+    - docker logout
+
+deploy:
+  stage: deploy
+  tags:
+    - docker
+  only:
+    - master
+  variables:
+    IMAGE: $IMAGE_NAME
+    PORT: 3001
+    API_CONTAINER: mendeleev_api
+  script:
+    - echo "$(echo "$REGISTRY_PASSWORD" | base64 -d)" | docker login -u "$(echo "$REGISTRY_USER" | base64 -d)" --password-stdin
+    - apk add py-pip
+    - apk add python-dev libffi-dev openssl-dev gcc libc-dev make
+    - pip install docker-compose
+    - docker-compose build --no-cache
+    - docker-compose up -d --build
+    - docker logout
