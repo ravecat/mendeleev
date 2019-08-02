@@ -7,7 +7,7 @@ stages:
 image: docker:stable
 
 variables:
-  IMAGE_NAME: ravecat/mendeleev
+  IMAGE: ravecat/mendeleev
   APP_CONTAINER: mendeleev
 
 cache:
@@ -52,8 +52,8 @@ build:
     - master
   script: 
     - echo "$(echo "$REGISTRY_PASSWORD" | base64 -d)" | docker login -u "$(echo "$REGISTRY_USER" | base64 -d)" --password-stdin
-    - docker build -t $IMAGE_NAME .
-    - docker push $IMAGE_NAME
+    - docker build -t $IMAGE .
+    - docker push $IMAGE
     - docker logout
 
 deploy:
@@ -63,9 +63,7 @@ deploy:
   only:
     - master
   variables:
-    IMAGE: $IMAGE_NAME
     PORT: 3001
-    API_CONTAINER: mendeleev_api
   script:
     - echo "$(echo "$REGISTRY_PASSWORD" | base64 -d)" | docker login -u "$(echo "$REGISTRY_USER" | base64 -d)" --password-stdin
     - apk add py-pip

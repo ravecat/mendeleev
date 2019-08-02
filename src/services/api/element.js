@@ -1,6 +1,4 @@
-import { axiosInstance } from './config/config';
-import { API_URL } from './config/constants';
+import { ENDPOINTS } from 'common/endpoints';
+import { axiosInstance } from './config';
 
-export const fetchElements = () => {
-  return axiosInstance.get(API_URL.ELEMENTS, { mode: 'no-cors' });
-};
+export const fetchElements = () => axiosInstance.get(ENDPOINTS.ELEMENTS);

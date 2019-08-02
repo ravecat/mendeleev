@@ -8,10 +8,9 @@ services:
     ports:
       - ${PORT}:80
     networks:
-      - production
-    external_links:
-      - ${API_CONTAINER}
+      - mendeleev
 
 networks:
-  production:
-    external: true
+  mendeleev:
+    name: mendeleev
+    driver: bridge
