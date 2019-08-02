@@ -1,8 +1,7 @@
-import { createActionBundle } from './helpers';
+import { createRequestActionBundle } from './helpers';
 
 export const {
-  fetch: fetchElements,
-  request: fetchElementsRequest,
-  success: fetchElementsSuccess,
-  failure: fetchElementsFailure
-} = createActionBundle('FETCH/ELEMENTS');
+  request: requestElements,
+  success: requestElementsSuccess,
+  failure: requestElementsFailure
+} = createRequestActionBundle('ELEMENTS');

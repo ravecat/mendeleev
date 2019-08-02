@@ -1,9 +1,9 @@
 import { handleActions } from 'redux-actions';
-import { fetchElementsSuccess } from 'store/actionCreators/element';
+import { requestElementsSuccess } from 'store/actionCreators/element';
 
 export const elements = handleActions(
   {
-    [fetchElementsSuccess]: (state, { payload }) => ({
+    [requestElementsSuccess]: (state, { payload }) => ({
       data: payload.data
     })
   },

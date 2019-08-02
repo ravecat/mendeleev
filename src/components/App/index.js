@@ -1,18 +1,18 @@
 import { connect } from 'react-redux';
 import { lifecycle, compose } from 'recompose';
-import { fetchElements } from 'store/actionCreators/element';
+import { requestElements } from 'store/actionCreators/element';
 import App from './App';
 
 export default compose(
   connect(
     null,
-    { fetchElements }
+    { requestElements }
   ),
   lifecycle({
     componentDidMount() {
-      const { fetchElements } = this.props;
+      const { requestElements } = this.props;
 
-      fetchElements();
+      requestElements();
     }
   })
 )(App);
