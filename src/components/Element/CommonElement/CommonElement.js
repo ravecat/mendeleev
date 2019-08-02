@@ -19,7 +19,7 @@ CommonElement.propTypes = {
   symbol: PropTypes.string,
   type: PropTypes.string,
   name: PropTypes.string,
-  atomicNumber: PropTypes.number,
+  atomicNumber: PropTypes.string,
   atomicWeight: PropTypes.string
 };
 
@@ -31,12 +31,13 @@ const Wrapper = styled.div`
   justify-content: space-between;
   margin-left: -1px;
   padding: 3px 5px;
-  min-width: ${({ theme }) => theme.table.cellWidth}px;
-  width: ${({ theme }) => theme.table.cellWidth}px;
-  height: ${({ theme }) => theme.table.cellHeight}px;
+  min-width: ${({ theme }) => theme?.table?.cellWidth}px;
+  width: ${({ theme }) => theme?.table?.cellWidth}px;
+  height: ${({ theme }) => theme?.table?.cellHeight}px;
   line-height: 1;
-  background-color: ${({ element: { type }, theme: { table } }) => (type ? table.color[type] : table.color.unknown)};
-  border: 1px solid ${({ theme: { colors } }) => colors.dividerColor};
+  background-color: ${({ element: { type } = {}, theme: { table } = {} }) =>
+    type ? table?.color?.[type] : table?.color?.unknown};
+  border: 1px solid ${({ theme: { colors } }) => colors?.dividerColor};
 
   :hover {
     cursor: pointer;
