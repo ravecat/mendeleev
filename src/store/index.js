@@ -1,7 +1,10 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import createSagaMiddleware from 'redux-saga';
+import { createBrowserHistory } from 'history';
+import { routerMiddleware } from 'connected-react-router';
+
 import sagaManager from './sagas/sagaManager';
-import reducers from './reducers';
+import { createRootReducer } from './reducers';
 
 const isProduction = process.env.NODE_ENV === 'production';
 const isDevelopment = process.env.NODE_ENV === 'development';
@@ -9,9 +12,11 @@ const isDevelopment = process.env.NODE_ENV === 'development';
 const isDevToolsExtension = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
 const composeEnhancers = isProduction ? compose : isDevToolsExtension || compose;
 
+export const history = createBrowserHistory();
+
 export default persistedState => {
   const sagaMiddleware = createSagaMiddleware();
-  const middlewares = [sagaMiddleware];
+  const middlewares = [sagaMiddleware, routerMiddleware(history)];
 
   if (isDevelopment && !isDevToolsExtension) {
     const { createLogger } = require('redux-logger');
@@ -23,8 +28,9 @@ export default persistedState => {
   }
 
   const enhancers = composeEnhancers(applyMiddleware(...middlewares));
+  const rootReducer = createRootReducer(history);
 
-  const store = createStore(reducers, persistedState, enhancers);
+  const store = createStore(rootReducer, persistedState, enhancers);
 
   sagaManager.startSagas(sagaMiddleware);
 

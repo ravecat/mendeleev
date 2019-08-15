@@ -1,5 +1,5 @@
 import { handleActions } from 'redux-actions';
-import { requestElementsSuccess } from 'store/actionCreators/element';
+import { requestElementsSuccess } from 'store/actions/element';
 
 export const elements = handleActions(
   {

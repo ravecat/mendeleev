@@ -1,6 +1,7 @@
-import { put, call, takeEvery } from 'redux-saga/effects';
 import camelCase from 'camel-case';
 import * as api from 'services/api';
+
+import { put, call, takeEvery } from 'redux-saga/effects';
 
 function* handleRequest({ payload, type }) {
   const meta = { primaryPayload: payload };
@@ -9,11 +10,12 @@ function* handleRequest({ payload, type }) {
   try {
     const methodName = camelCase(type);
     const method = api[methodName];
-    const { data, status } = yield call(method, payload);
 
     if (!method) {
       throw new Error(`API method "${methodName}" not found`);
     }
+
+    const { data, status } = yield call(method, payload);
 
     yield put({
       type: `${ACTION}/SUCCESS/${DOMAIN}`,

@@ -1,1 +1,1 @@
-export { requestElements } from './element';
+export { requestElements, requestElement } from './element';

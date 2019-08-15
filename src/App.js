@@ -2,13 +2,16 @@ import React from 'react';
 import styled from 'styled-components';
 import { Media } from 'styled-components-toolbox';
 import { Route } from 'react-router-dom';
-import { Main, Aside } from 'components';
+import Aside from 'components/Aside';
+import { Main, Element } from 'screen';
+import { ELEMENTS, HOME } from 'common/routes';
 
 const App = () => (
   <>
     <Aside />
     <Article>
-      <Route component={Main} path="/" />
+      <Route component={Main} exact path={HOME} />
+      <Route component={Element} path={`${ELEMENTS}/:id`} />
     </Article>
   </>
 );

@@ -1,14 +1,25 @@
-import React, { Fragment } from 'react';
+import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Media, Header } from 'styled-components-toolbox';
 import Table from 'components/Table';
 
-const Main = () => (
-  <Fragment>
-    <Title>Periodic table of chemical elements</Title>
-    <Table />
-  </Fragment>
-);
+function Main({ onMount }) {
+  useEffect(() => {
+    onMount();
+  }, []);
+
+  return (
+    <>
+      <Title>Periodic table of chemical elements</Title>
+      <Table />
+    </>
+  );
+}
+
+Main.propTypes = {
+  onMount: PropTypes.func
+};
 
 export default Main;
 

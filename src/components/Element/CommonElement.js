@@ -1,10 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { Text } from 'styled-components-toolbox';
+import { ELEMENTS } from 'common/routes';
 
-const CommonElement = ({ symbol, name, type, atomicNumber, atomicWeight }) => (
-  <Wrapper element={{ atomicNumber, type }}>
+const CommonElement = ({ symbol, name, type, atomicNumber, atomicWeight, ...props }) => (
+  <Wrapper to={`${ELEMENTS}/${atomicNumber}`} type={props?.classification?.type?.value} {...props}>
     <SymbolWrapper>
       <Symbol bold>{symbol}</Symbol>
       <AtomicNumber bold>{atomicNumber}</AtomicNumber>
@@ -16,16 +18,18 @@ const CommonElement = ({ symbol, name, type, atomicNumber, atomicWeight }) => (
 
 CommonElement.propTypes = {
   className: PropTypes.string,
+  id: PropTypes.string,
   symbol: PropTypes.string,
   type: PropTypes.string,
   name: PropTypes.string,
   atomicNumber: PropTypes.string,
-  atomicWeight: PropTypes.string
+  atomicWeight: PropTypes.string,
+  onClick: PropTypes.func
 };
 
 export default CommonElement;
 
-const Wrapper = styled.div`
+const Wrapper = styled(Link)`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -34,9 +38,10 @@ const Wrapper = styled.div`
   min-width: ${({ theme }) => theme?.table?.cellWidth}px;
   width: ${({ theme }) => theme?.table?.cellWidth}px;
   height: ${({ theme }) => theme?.table?.cellHeight}px;
+  color: inherit;
+  text-decoration: none;
   line-height: 1;
-  background-color: ${({ element: { type } = {}, theme: { table } = {} }) =>
-    type ? table?.color?.[type] : table?.color?.unknown};
+  background-color: ${({ type, theme: { table } = {} }) => (type ? table?.color?.[type] : table?.color?.unknown)};
   border: 1px solid ${({ theme: { colors } }) => colors?.dividerColor};
 
   :hover {

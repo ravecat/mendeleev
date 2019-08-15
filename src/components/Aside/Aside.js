@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Media, Icon } from 'styled-components-toolbox';
+
 import Grid from './asset/grid.svg';
 import Atom from './asset/atom.svg';
 import List from './asset/list.svg';

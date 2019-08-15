@@ -32,7 +32,7 @@ export const isBaseElement = pipe(
 
 export const getElements = createSelector(
   pathOr([], ['elements', 'data']),
-  sortBy(prop('atomic_number'))
+  sortBy(prop('atomicNumber'))
 );
 
 export const getLastElement = createSelector(
@@ -42,7 +42,7 @@ export const getLastElement = createSelector(
 
 export const getMaxAtomicNumber = createSelector(
   getLastElement,
-  prop('atomic_number')
+  prop('atomicNumber')
 );
 
 export const getMaxPeriod = createSelector(

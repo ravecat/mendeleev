@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { path } from 'ramda';
+
 import CommonElement from './CommonElement';
 
 function StandartElement(props) {

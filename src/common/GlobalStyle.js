@@ -30,6 +30,10 @@ export default createGlobalStyle`
   [hidden] {
     display: none !important;
   }
+
+  a[disabled] {
+    pointer-events: none;
+  }
   
   b,
   strong {

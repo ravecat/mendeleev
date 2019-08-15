@@ -1,11 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import { path } from 'ramda';
+
 import CommonElement from './CommonElement';
 
 function BaseElement(props) {
-  const group = path(['classification', 'group', 'value'], props);
-  const period = path(['classification', 'period', 'value'], props);
+  const group = props?.classification?.group?.value;
+  const period = props?.classification?.period?.value;
 
   return (
     <Wrapper group={group} period={period} {...props}>

@@ -30,7 +30,7 @@
     "describe": true
   },
   "rules": {
-    "eol-last": [2, "always"],
+    "import/order": [2, {"newlines-between": "always"}],
     "no-console": [2, { "allow": ["warn", "error"] }],
     "no-unused-vars": [2, {
       "vars": "all",
@@ -44,7 +44,6 @@
     }],
     "react/jsx-sort-props": [2, {
       "noSortAlphabetically": false,
-      "callbacksLast": true
     }],
     "react/jsx-wrap-multilines": [2, {
       "assignment": "parens-new-line",
