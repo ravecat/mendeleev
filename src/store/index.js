@@ -14,9 +14,9 @@ const composeEnhancers = isProduction ? compose : isDevToolsExtension || compose
 
 export const history = createBrowserHistory();
 
-export default persistedState => {
+export default function configureStore(preloadedState) {
   const sagaMiddleware = createSagaMiddleware();
-  const middlewares = [sagaMiddleware, routerMiddleware(history)];
+  const middlewares = [routerMiddleware(history), sagaMiddleware];
 
   if (isDevelopment && !isDevToolsExtension) {
     const { createLogger } = require('redux-logger');
@@ -30,12 +30,12 @@ export default persistedState => {
   const enhancers = composeEnhancers(applyMiddleware(...middlewares));
   const rootReducer = createRootReducer(history);
 
-  const store = createStore(rootReducer, persistedState, enhancers);
+  const store = createStore(rootReducer, preloadedState, enhancers);
 
   sagaManager.startSagas(sagaMiddleware);
 
+  // enable hot module reloading for reducers
   if (module.hot) {
-    // enable hot module reloading for reducers
     module.hot.accept('./reducers', () => {
       require('./reducers')
         .default()
@@ -53,4 +53,4 @@ export default persistedState => {
   }
 
   return store;
-};
+}
