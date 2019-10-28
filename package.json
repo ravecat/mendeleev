@@ -32,7 +32,7 @@
     "@commitlint/cli": "^8.0.0",
     "@commitlint/config-angular": "^8.0.0",
     "@semantic-release/changelog": "^3.0.4",
-    "@semantic-release/git": "^7.0.16",
+    "@semantic-release/git": "^7.0.17",
     "@semantic-release/gitlab": "^3.1.7",
     "@svgr/webpack": "4.1.0",
     "babel-core": "7.0.0-bridge.0",
