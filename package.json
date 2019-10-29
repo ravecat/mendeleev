@@ -2,7 +2,7 @@
   "name": "mendeleev",
   "version": "0.1.0",
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.18.1",
     "camel-case": "^3.0.0",
     "dotenv": "6.0.0",
     "dotenv-expand": "4.2.0",
