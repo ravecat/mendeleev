@@ -25,7 +25,7 @@
     "redux-saga": "^1.0.2",
     "reselect": "^4.0.0",
     "styled-components": "^4.1.3",
-    "styled-components-toolbox": "^0.3.0"
+    "styled-components-toolbox": "0.5.1"
   },
   "devDependencies": {
     "@babel/plugin-proposal-nullish-coalescing-operator": "^7.4.4",
@@ -72,7 +72,7 @@
     "lint:eslint": "eslint '**/*.{js,jsx}'",
     "lint:stylelint": "stylelint '**/*.{js,jsx,css}'",
     "lint": "yarn lint:eslint && yarn lint:stylelint",
-    "lint:fix": "yarn lint:eslint --fix && yarn lint:stylelint --fix",
+    "lint:fix": "yarn lint:eslint --fix && yarn lint:stylelint",
     "prettier": "prettier --check *.{css,md,yml,json}"
   },
   "husky": {
@@ -84,7 +84,7 @@
   "lint-staged": {
     "*.{js,jsx}": [
       "eslint --fix",
-      "stylelint --fix",
+      "stylelint",
       "git add"
     ],
     "*.{css,md,yml,json}": [

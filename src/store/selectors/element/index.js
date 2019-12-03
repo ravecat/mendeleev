@@ -1,6 +1,7 @@
 import { createSelector } from 'reselect';
-import { propOr, pick, pipe, defaultTo, prop, map, cond, equals, anyPass, isNil, is, match, head } from 'ramda';
+import { propOr, pick, pipe, defaultTo, prop, map, cond, equals, pathOr, anyPass, isNil, is, match, head } from 'ramda';
 
+import { TYPE } from 'common/constants';
 import { getPathname } from 'store/selectors/router';
 
 export const getElement = propOr({}, 'element');
@@ -11,9 +12,9 @@ export const getElementIdByPath = createSelector(getPathname, pipe(match(/\d+/g)
 
 export const getElementData = createSelector(getElement, pipe(prop('data'), defaultTo({})));
 
-export const getBasicProperties = createSelector(
-  getElementData,
-  pick(['symbol', 'atomicWeight', 'atomicNumber', 'name'])
+export const getElementType = createSelector(
+  getElement,
+  pathOr(TYPE.UNKNOWN, ['data', 'element', 'classification', 'type'])
 );
 
 export const getValue = cond([
@@ -38,6 +39,11 @@ export const getProperties = pipe(
     label,
     value: getValue({ label, property })
   }))
+);
+
+export const getBasicProperties = createSelector(
+  getElementData,
+  pick(['symbol', 'atomicWeight', 'atomicNumber', 'name'])
 );
 
 export const getDomainProperties = pipe(

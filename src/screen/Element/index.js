@@ -16,7 +16,7 @@ export default compose(
   connect(
     applySpec({
       domains: getDomains,
-      basicData: getBasicProperties
+      element: getBasicProperties
     })
   )
 )(Element);

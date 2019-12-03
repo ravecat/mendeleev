@@ -1,20 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
-import ElementData from 'components/ElementData';
-import ElementCard from 'components/ElementCard';
+import Domains from 'components/Domains';
+import Card from 'components/Card';
 
-function Element({ domains, basicData }) {
+function Element({ domains, element }) {
   return (
-    <>
-      <ElementCard data={basicData} />
-      <ElementData data={domains} />
-    </>
+    <Wrapper>
+      <Card data={element} />
+      <Domains data={domains} />
+    </Wrapper>
   );
 }
 
 Element.propTypes = {
-  basicData: PropTypes.shape({
+  element: PropTypes.shape({
     name: PropTypes.string,
     symbol: PropTypes.string,
     atomicNumber: PropTypes.number,
@@ -29,3 +30,7 @@ Element.propTypes = {
 };
 
 export default Element;
+
+const Wrapper = styled.div`
+  display: flex;
+`;

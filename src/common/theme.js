@@ -8,7 +8,7 @@ export default {
     dividerColor: '#BDBDBD'
   },
   textSize: {
-    header: '16px',
+    header: '20px',
     text: '14px',
     secondaryText: '12px',
     thirdText: '10px',

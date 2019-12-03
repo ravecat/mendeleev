@@ -25,6 +25,7 @@ export default createGlobalStyle`
     box-sizing: border-box;
     line-height: 1.5;
     font-family: Roboto, sans-serif;
+    font-size: ${({ theme }) => theme.textSize.text};
   }
   
   [hidden] {

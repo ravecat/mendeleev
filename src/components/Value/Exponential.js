@@ -27,11 +27,15 @@ Exponential.defaultProps = {
 };
 
 Exponential.propTypes = {
-  value: PropTypes.shape({
-    p: PropTypes.number,
-    M: PropTypes.number,
-    n: PropTypes.number
-  }),
+  value: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+    PropTypes.shape({
+      p: PropTypes.number,
+      M: PropTypes.number,
+      n: PropTypes.number
+    })
+  ]),
   unit: PropTypes.string
 };
 
