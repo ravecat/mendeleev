@@ -1,5 +1,3 @@
-import state from 'store/__test__/state';
-
 import {
   getMaxAtomicNumber,
   getMaxPeriod,
@@ -11,11 +9,13 @@ import {
   isBaseElement
 } from '../index';
 
+import state from 'store/__test__/state';
+
 describe('selector/elements', () => {
   let element;
 
   beforeEach(() => {
-    element = state.elements.data[0];
+    element = state?.elements?.data[0];
   });
 
   it('get period value', () => {
@@ -61,7 +61,7 @@ describe('selector/elements', () => {
   });
 
   it('get elements for mini view', () => {
-    const received = getBaseElements(state).map(element => element['atomicNumber']);
+    const received = getBaseElements(state).map(({ atomicNumber }) => atomicNumber);
 
     const mockedBaseElementsAtomicNumber = [2, 3, 4];
 
@@ -70,7 +70,7 @@ describe('selector/elements', () => {
 
   it('get elements groups', () => {
     // Get 110 element data from mocked state
-    const received = getElementGroups(state)[0].set[0]['atomicNumber'];
+    const received = getElementGroups(state)[0].set[0].atomicNumber;
 
     const mockedAtomicMassFromSpecificGroup = 110;
 

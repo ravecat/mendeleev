@@ -1,3 +1,5 @@
+/* eslint-disable no-template-curly-in-string */
+
 module.exports = {
   // Set a required branch value for debugging mode
   branch: 'master',

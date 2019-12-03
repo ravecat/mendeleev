@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { Collapse } from 'styled-components-toolbox';
+
 import Value from 'components/Value';
 
 function ElementData({ data }) {
@@ -10,9 +11,9 @@ function ElementData({ data }) {
       {data.map(({ domain, label }) => (
         <Domain key={label}>
           <Collapse header={label}>
-            {domain.map(({ label, value }) => (
-              <Wrapper key={label}>
-                <span>{label}</span>
+            {domain.map(({ label: domainLabel, value }) => (
+              <Wrapper key={domainLabel}>
+                <span>{domainLabel}</span>
                 <Value {...value} />
               </Wrapper>
             ))}
@@ -29,7 +30,7 @@ ElementData.propTypes = {
       domain: PropTypes.arrayOf(PropTypes.shape({})),
       label: PropTypes.string
     })
-  )
+  ).isRequired
 };
 
 export default ElementData;

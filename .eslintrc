@@ -1,23 +1,38 @@
 {
   "extends": [
-    "react-app",
+    "airbnb",
     "plugin:jest/recommended",
     "eslint:recommended",
-    "plugin:react/recommended",
     "plugin:prettier/recommended"
   ],
   "plugins": [
+    "react-hooks",
     "import",
     "jsx-a11y"
   ],
   "env": {
     "browser": true,
-    "es6": true
+    "es6": true,
+    "amd": true,
+    "node": true
   },
+  "parser": "babel-eslint",
   "parserOptions": {
     "sourceType": "module",
     "ecmaFeatures": {
       "jsx": true
+    }
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [
+          ".js"
+        ],
+        "paths": [
+          "src"
+        ]
+      }
     }
   },
   "globals": {
@@ -27,9 +42,17 @@
     "it": true,
     "jest": true,
     "expect": true,
-    "describe": true
+    "describe": true,
+    "module": false
   },
   "rules": {
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "react/jsx-props-no-spreading": 0,
+    "react/no-array-index-key": 0,
+    "global-require": 0,
+    "import/prefer-default-export": 0,
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "import/order": [2, {"newlines-between": "always"}],
     "no-console": [2, { "allow": ["warn", "error"] }],
     "no-unused-vars": [2, {

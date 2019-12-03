@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { Text } from 'styled-components-toolbox';
+
 import { ELEMENTS } from 'common/routes';
 
 const CommonElement = ({ symbol, name, type, atomicNumber, atomicWeight, ...props }) => (
@@ -16,15 +17,20 @@ const CommonElement = ({ symbol, name, type, atomicNumber, atomicWeight, ...prop
   </Wrapper>
 );
 
+CommonElement.defaultProps = {
+  symbol: null,
+  type: null,
+  name: null,
+  atomicNumber: null,
+  atomicWeight: null
+};
+
 CommonElement.propTypes = {
-  className: PropTypes.string,
-  id: PropTypes.string,
   symbol: PropTypes.string,
   type: PropTypes.string,
   name: PropTypes.string,
   atomicNumber: PropTypes.string,
-  atomicWeight: PropTypes.string,
-  onClick: PropTypes.func
+  atomicWeight: PropTypes.string
 };
 
 export default CommonElement;

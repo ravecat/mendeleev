@@ -2,8 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import { Media } from 'styled-components-toolbox';
 import { Route } from 'react-router-dom';
+
 import Aside from 'components/Aside';
-import { Main, Element } from 'screen';
+import Main from 'screen/Main';
+import Element from 'screen/Element';
 import { ELEMENTS, HOME } from 'common/routes';
 
 const App = () => (
@@ -31,5 +33,5 @@ const Article = styled.article`
     padding: 10px;
     left: 0;
     bottom: 50px;
-  `};
+  `}
 `;

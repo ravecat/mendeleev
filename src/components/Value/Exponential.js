@@ -5,7 +5,9 @@ function Exponential({ value: { p, n, M }, unit }) {
   return M ? (
     <>
       <span>
-        {M}*{n}
+        {M}
+        <span>&#215;</span>
+        {n}
         <sup>{p}</sup>
       </span>
       {unit && <span>{` ${unit}`}</span>}
@@ -14,6 +16,15 @@ function Exponential({ value: { p, n, M }, unit }) {
     '-'
   );
 }
+
+Exponential.defaultProps = {
+  value: {
+    p: null,
+    M: null,
+    n: null
+  },
+  unit: null
+};
 
 Exponential.propTypes = {
   value: PropTypes.shape({

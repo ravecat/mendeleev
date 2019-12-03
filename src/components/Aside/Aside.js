@@ -33,7 +33,7 @@ const Wrapper = styled.aside`
     height: 50px;
     flex-direction: row;
     justify-content: space-evenly;
-  `};
+  `}
 `;
 
 const CustomIcon = styled(Icon)`
@@ -42,5 +42,5 @@ const CustomIcon = styled(Icon)`
   margin-bottom: 20px;
   ${Media.responsive`
     margin: 0;
-  `};
+  `}
 `;

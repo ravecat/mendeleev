@@ -1,10 +1,11 @@
 import { connect } from 'react-redux';
-import { requestElement } from 'store/actions/element';
 import { applySpec, compose } from 'ramda';
-import { getDomains, getBasicProperties, getElementLoadingStatus, getElementIdByPath } from 'store/selectors/element';
-import withLoading from 'common/hoc/withLoading';
 
 import Element from './Element';
+
+import { requestElement } from 'store/actions/element';
+import { getDomains, getBasicProperties, getElementLoadingStatus, getElementIdByPath } from 'store/selectors/element';
+import withLoading from 'common/hoc/withLoading';
 
 export default compose(
   withLoading({

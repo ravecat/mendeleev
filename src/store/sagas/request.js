@@ -1,7 +1,7 @@
 import camelCase from 'camel-case';
-import * as api from 'services/api';
-
 import { put, call, takeEvery } from 'redux-saga/effects';
+
+import * as api from 'services/api';
 
 function* handleRequest({ payload, type }) {
   const meta = { primaryPayload: payload };

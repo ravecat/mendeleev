@@ -1,6 +1,6 @@
-import state from 'store/__test__/state';
-
 import { getElementData } from '../index';
+
+import state from 'store/__test__/state';
 
 describe('selector/element', () => {
   it('get element data', () => {

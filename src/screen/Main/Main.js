@@ -1,14 +1,10 @@
-import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
 import styled from 'styled-components';
 import { Media, Header } from 'styled-components-toolbox';
+
 import Table from 'components/Table';
 
-function Main({ onMount }) {
-  useEffect(() => {
-    onMount();
-  }, []);
-
+function Main() {
   return (
     <>
       <Title>Periodic table of chemical elements</Title>
@@ -16,10 +12,6 @@ function Main({ onMount }) {
     </>
   );
 }
-
-Main.propTypes = {
-  onMount: PropTypes.func
-};
 
 export default Main;
 
@@ -29,5 +21,5 @@ const Title = styled(Header)`
   font-size: ${({ theme }) => theme.textSize.header};
   ${Media.responsive`
     text-align: center;
-  `};
+  `}
 `;

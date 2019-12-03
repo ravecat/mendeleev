@@ -12,6 +12,11 @@ function Ordinary({ value, unit }) {
   );
 }
 
+Ordinary.defaultProps = {
+  value: null,
+  unit: null
+};
+
 Ordinary.propTypes = {
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   unit: PropTypes.string

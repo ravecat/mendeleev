@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Responsive from 'react-responsive';
+
 import { RESPONSIVE } from 'common/config';
 import { BaseElement, CommonElement, StandartElement } from 'components/Element';
 
@@ -60,12 +61,12 @@ function Table({ maxPeriod, baseElements, groups, periods, transElements, nonTra
 }
 
 Table.propTypes = {
-  transElements: PropTypes.arrayOf(PropTypes.object),
-  nonTransElements: PropTypes.arrayOf(PropTypes.object),
-  baseElements: PropTypes.arrayOf(PropTypes.object),
-  groups: PropTypes.arrayOf(PropTypes.object),
-  periods: PropTypes.arrayOf(PropTypes.array),
-  maxPeriod: PropTypes.string
+  transElements: PropTypes.arrayOf(PropTypes.object).isRequired,
+  nonTransElements: PropTypes.arrayOf(PropTypes.object).isRequired,
+  baseElements: PropTypes.arrayOf(PropTypes.object).isRequired,
+  groups: PropTypes.arrayOf(PropTypes.object).isRequired,
+  periods: PropTypes.arrayOf(PropTypes.array).isRequired,
+  maxPeriod: PropTypes.string.isRequired
 };
 
 export default Table;

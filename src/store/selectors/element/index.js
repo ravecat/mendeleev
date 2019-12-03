@@ -1,29 +1,15 @@
 import { createSelector } from 'reselect';
 import { propOr, pick, pipe, defaultTo, prop, map, cond, equals, anyPass, isNil, is, match, head } from 'ramda';
+
 import { getPathname } from 'store/selectors/router';
 
 export const getElement = propOr({}, 'element');
 
-export const getElementLoadingStatus = createSelector(
-  getElement,
-  anyPass([prop('fetching'), prop('initial')])
-);
+export const getElementLoadingStatus = createSelector(getElement, anyPass([prop('fetching'), prop('initial')]));
 
-export const getElementIdByPath = createSelector(
-  getPathname,
-  pipe(
-    match(/\d+/g),
-    head
-  )
-);
+export const getElementIdByPath = createSelector(getPathname, pipe(match(/\d+/g), head));
 
-export const getElementData = createSelector(
-  getElement,
-  pipe(
-    prop('data'),
-    defaultTo({})
-  )
-);
+export const getElementData = createSelector(getElement, pipe(prop('data'), defaultTo({})));
 
 export const getBasicProperties = createSelector(
   getElementData,
@@ -74,7 +60,4 @@ export const getDomainProperties = pipe(
   }))
 );
 
-export const getDomains = createSelector(
-  getElementData,
-  getDomainProperties
-);
+export const getDomains = createSelector(getElementData, getDomainProperties);

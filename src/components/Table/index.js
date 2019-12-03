@@ -1,5 +1,8 @@
 import { connect } from 'react-redux';
 import { applySpec } from 'ramda';
+
+import Table from './Table';
+
 import {
   getElements,
   getMaxAtomicNumber,
@@ -10,8 +13,6 @@ import {
   getTransElement,
   getNonTransElement
 } from 'store/selectors/elements';
-
-import Table from './Table';
 
 const mapStateToProps = applySpec({
   elements: getElements,

@@ -17,6 +17,11 @@ function Value({ value, unit, type }) {
   );
 }
 
+Value.defaultProps = {
+  value: null,
+  unit: null
+};
+
 Value.propTypes = {
   value: PropTypes.oneOfType([
     PropTypes.string,
@@ -28,7 +33,7 @@ Value.propTypes = {
     })
   ]),
   unit: PropTypes.string,
-  type: PropTypes.string
+  type: PropTypes.string.isRequired
 };
 
 export default Value;

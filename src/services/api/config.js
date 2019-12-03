@@ -1,4 +1,5 @@
 import axios from 'axios';
+
 import { API_URL } from 'common/config';
 
 export const axiosInstance = axios.create({

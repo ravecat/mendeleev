@@ -7,7 +7,6 @@ import sagaManager from './sagas/sagaManager';
 import { createRootReducer } from './reducers';
 
 const isProduction = process.env.NODE_ENV === 'production';
-const isDevelopment = process.env.NODE_ENV === 'development';
 
 const isDevToolsExtension = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
 const composeEnhancers = isProduction ? compose : isDevToolsExtension || compose;
@@ -17,15 +16,6 @@ export const history = createBrowserHistory();
 export default function configureStore(preloadedState) {
   const sagaMiddleware = createSagaMiddleware();
   const middlewares = [routerMiddleware(history), sagaMiddleware];
-
-  if (isDevelopment && !isDevToolsExtension) {
-    const { createLogger } = require('redux-logger');
-    const logger = createLogger({
-      collapsed: true
-    });
-
-    middlewares.push(logger);
-  }
 
   const enhancers = composeEnhancers(applyMiddleware(...middlewares));
   const rootReducer = createRootReducer(history);

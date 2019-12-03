@@ -12,7 +12,7 @@ ElementCard.propTypes = {
     symbol: PropTypes.string,
     atomicNumber: PropTypes.number,
     atomicWeight: PropTypes.number
-  })
+  }).isRequired
 };
 
 export default ElementCard;
