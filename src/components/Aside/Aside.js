@@ -1,18 +1,52 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Media, Icon } from 'styled-components-toolbox';
+import PropTypes from 'prop-types';
+import { Media, Icon as BaseIcon } from 'styled-components-toolbox';
+import { Link as RouterLink } from 'react-router-dom';
 
 import Grid from './asset/grid.svg';
 import Atom from './asset/atom.svg';
 import List from './asset/list.svg';
 
-const Aside = () => (
+import { TYPE } from 'common/constants';
+import { ELEMENTS, HOME, PROPERTIES } from 'common/routes';
+
+const Aside = ({ fetching, element: { symbol, atomicNumber }, type }) => (
   <Wrapper>
-    <CustomIcon asset={Grid} pointer />
-    <CustomIcon asset={List} pointer />
-    <CustomIcon asset={Atom} pointer />
+    <Link to={HOME}>
+      <Icon asset={Grid} pointer />
+    </Link>
+    <Link to={PROPERTIES}>
+      <Icon asset={List} pointer />
+    </Link>
+    {fetching ? (
+      <Link to={ELEMENTS}>
+        <Icon asset={Atom} pointer />
+      </Link>
+    ) : (
+      <AtomLink symbol={symbol} to={`${ELEMENTS}/${atomicNumber}`} type={type}>
+        <Icon asset={Atom} pointer />
+      </AtomLink>
+    )}
   </Wrapper>
 );
+
+Aside.defaultProps = {
+  element: null,
+  fetching: false,
+  type: TYPE.UNKNOWN
+};
+
+Aside.propTypes = {
+  element: PropTypes.shape({
+    name: PropTypes.string,
+    symbol: PropTypes.string,
+    atomicNumber: PropTypes.number,
+    atomicWeight: PropTypes.number
+  }),
+  fetching: PropTypes.bool,
+  type: PropTypes.string
+};
 
 export default Aside;
 
@@ -36,11 +70,38 @@ const Wrapper = styled.aside`
   `}
 `;
 
-const CustomIcon = styled(Icon)`
+const Icon = styled(BaseIcon)`
   width: 20px;
   height: 20px;
+  ${Media.responsive`
+    width: 25px;
+    height: 25px;
+  `}
+`;
+
+const Link = styled(RouterLink)`
   margin-bottom: 20px;
   ${Media.responsive`
     margin: 0;
   `}
+`;
+
+const AtomLink = styled(RouterLink)`
+  position: relative;
+
+  &::before {
+    position: absolute;
+    left: -5px;
+    bottom: -5px;
+    width: 20px;
+    height: 20px;
+    content: '${({ symbol }) => symbol}';
+    line-height: 20px;
+    text-align: center;
+    font-size: ${({ theme }) => theme.textSize.thirdText};
+    color: ${({ theme }) => theme.colors.primaryTextColor};
+    display: inline-block;
+    border-radius: 10px;
+    background-color: ${({ type, theme: { table } = {} }) => (type ? table?.color?.[type] : table?.color?.unknown)};
+  }
 `;

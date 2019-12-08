@@ -4,7 +4,7 @@ import { mergeLeft } from 'ramda';
 import { requestElementSuccess, requestElement } from 'store/actions/element';
 
 const initialSate = {
-  data: {},
+  data: null,
   initial: true,
   fetching: false,
   fetched: false

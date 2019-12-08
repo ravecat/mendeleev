@@ -14,7 +14,7 @@ export const getElementData = createSelector(getElement, pipe(prop('data'), defa
 
 export const getElementType = createSelector(
   getElement,
-  pathOr(TYPE.UNKNOWN, ['data', 'element', 'classification', 'type'])
+  pathOr(TYPE.UNKNOWN, ['data', 'classification', 'type', 'value'])
 );
 
 export const getValue = cond([

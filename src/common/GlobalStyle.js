@@ -20,7 +20,7 @@ export default createGlobalStyle`
     min-height: 100%;
   }
 
-  body * {
+  body *, * ::before, * ::after {
     margin: 0;
     box-sizing: border-box;
     line-height: 1.5;
