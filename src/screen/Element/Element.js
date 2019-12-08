@@ -33,4 +33,5 @@ export default Element;
 
 const Wrapper = styled.div`
   display: flex;
+  flex-flow: column wrap;
 `;

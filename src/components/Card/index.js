@@ -34,7 +34,8 @@ export default Card;
 const Wrapper = styled.div`
   display: flex;
   flex-flow: column wrap;
-  flex-basis: 200px;
+  max-width: 600px;
+  margin-bottom: 10px;
   font-size: ${({ theme }) => theme.textSize.secondaryText};
 `;
 
