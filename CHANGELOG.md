@@ -1,3 +1,10 @@
+## [0.2.1](https://gitlab.com/ravecat/mendeleev/compare/0.2.0...0.2.1) (2019-12-10)
+
+
+### Bug Fixes
+
+* **scripts:** fix changelog generation ([e654e8a](https://gitlab.com/ravecat/mendeleev/commit/e654e8a8f4507244aea72105d1e6f0d2409193fb))
+
 # [0.2.0](https://gitlab.com/ravecat/mendeleev/compare/0.1.0...0.2.0) (2019-12-10)
 
 
