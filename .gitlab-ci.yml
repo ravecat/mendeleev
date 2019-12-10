@@ -63,8 +63,6 @@ build_app:
       - node_modules/
       - build/
     expire_in: 1d
-  except:
-    - develop
   tags:
     - docker
   dependencies: []
@@ -78,7 +76,6 @@ test_lint:
     - docker
   except:
     - master
-    - develop
   dependencies:
     - build_app
   script:
@@ -92,7 +89,6 @@ test_app:
     - docker
   except:
     - master
-    - develop
   dependencies:
     - build_app
   script:
