@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { Collapse, Accordion as BaseAccordion } from 'styled-components-toolbox';
 
+import Property from 'components/Property';
 import Value from 'components/Value';
 
 function Domains({ data }) {
@@ -11,8 +12,7 @@ function Domains({ data }) {
       {data.map(({ domain, label }) => (
         <Collapse details key={label} summary={label}>
           {domain.map(({ label: property, value }) => (
-            <Property key={property}>
-              <span>{property}</span>
+            <Property key={property} title={property}>
               <Value {...value} />
             </Property>
           ))}
@@ -32,12 +32,6 @@ Domains.propTypes = {
 };
 
 export default Domains;
-
-const Property = styled.div`
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-between;
-`;
 
 const Accordion = styled(BaseAccordion)`
   max-width: 600px;

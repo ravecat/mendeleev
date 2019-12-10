@@ -1,31 +1,31 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { Media, Icon as BaseIcon } from 'styled-components-toolbox';
+import { Media } from 'styled-components-toolbox';
 import { Link as RouterLink } from 'react-router-dom';
 
-import Grid from './asset/grid.svg';
-import Atom from './asset/atom.svg';
-import List from './asset/list.svg';
-
+import BaseIcon from 'components/Icon';
+import { ReactComponent as Grid } from 'asset/grid.svg';
+import { ReactComponent as Atom } from 'asset/atom.svg';
+import { ReactComponent as List } from 'asset/list.svg';
 import { TYPE } from 'common/constants';
 import { ELEMENTS, HOME, PROPERTIES } from 'common/routes';
 
 const Aside = ({ fetching, element: { symbol, atomicNumber }, type }) => (
   <Wrapper>
     <Link to={HOME}>
-      <Icon asset={Grid} pointer />
+      <Icon asset={<Grid />} pointer />
     </Link>
     <Link to={PROPERTIES}>
-      <Icon asset={List} pointer />
+      <Icon asset={<List />} pointer />
     </Link>
     {fetching ? (
       <Link to={ELEMENTS}>
-        <Icon asset={Atom} pointer />
+        <Icon asset={<Atom />} pointer />
       </Link>
     ) : (
       <AtomLink symbol={symbol} to={`${ELEMENTS}/${atomicNumber}`} type={type}>
-        <Icon asset={Atom} pointer />
+        <Icon asset={<Atom />} pointer />
       </AtomLink>
     )}
   </Wrapper>
@@ -73,6 +73,7 @@ const Wrapper = styled.aside`
 const Icon = styled(BaseIcon)`
   width: 20px;
   height: 20px;
+  fill: ${({ theme }) => theme.colors.icon};
   ${Media.responsive`
     width: 25px;
     height: 25px;

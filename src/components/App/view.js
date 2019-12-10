@@ -6,6 +6,8 @@ import { Switch, Route } from 'react-router-dom';
 import Aside from 'components/Aside';
 import Main from 'screen/Main';
 import Element from 'screen/Element';
+import Properties from 'screen/Properties';
+import Elements from 'screen/Elements';
 import { ELEMENTS, HOME, PROPERTIES } from 'common/routes';
 
 const App = () => (
@@ -14,8 +16,8 @@ const App = () => (
     <Article>
       <Switch>
         <Route component={Main} exact path={HOME} />
-        <Route component={() => <div>Elements</div>} exact path={ELEMENTS} />
-        <Route component={() => <div>Properties</div>} exact path={PROPERTIES} />
+        <Route component={Elements} exact path={ELEMENTS} />
+        <Route component={Properties} exact path={PROPERTIES} />
         <Route component={Element} path={`${ELEMENTS}/:id`} />
       </Switch>
     </Article>

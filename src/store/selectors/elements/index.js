@@ -27,7 +27,7 @@ export const isTransElement = pipe(getBlockValue, anyPass([equals(BLOCK.f), equa
 
 export const isBaseElement = pipe(getBlockValue, anyPass([equals(BLOCK.s), equals(BLOCK.p)]));
 
-export const getElementsLoadingStatus = createSelector(getState, prop('fetching'));
+export const getElementsLoadingStatus = createSelector(getState, anyPass([prop('fetching'), prop('initial')]));
 
 export const getElements = createSelector(pathOr([], ['elements', 'data']), sortBy(prop('atomicNumber')));
 

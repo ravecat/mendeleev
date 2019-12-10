@@ -3,20 +3,16 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import Title from 'components/Title';
-import Domains from 'components/Domains';
-import Card from 'components/Card';
 
-function Element({ domains, element }) {
+const Elements = ({ domains, element }) => {
   return (
     <Wrapper>
-      <Title>{element.name}</Title>
-      <Card data={element} />
-      <Domains data={domains} />
+      <Title>Elements</Title>
     </Wrapper>
   );
-}
+};
 
-Element.propTypes = {
+Elements.propTypes = {
   element: PropTypes.shape({
     name: PropTypes.string,
     symbol: PropTypes.string,
@@ -31,7 +27,7 @@ Element.propTypes = {
   ).isRequired
 };
 
-export default Element;
+export default Elements;
 
 const Wrapper = styled.div`
   display: flex;

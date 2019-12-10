@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 import { ConnectedRouter } from 'connected-react-router';
 
-import App from './App';
+import App from './components/App';
 import configureStore, { history } from './store';
 
 import theme from 'common/theme';

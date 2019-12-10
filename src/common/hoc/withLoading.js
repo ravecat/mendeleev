@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-function withLoading({ selector, action, paramSelector = () => {} }) {
+function withLoading({ selector = () => {}, action, paramSelector = () => {} }) {
   return function Wrapper(WrappedComponent) {
     return function WithLoadingComponent(props) {
       const loading = useSelector(selector);

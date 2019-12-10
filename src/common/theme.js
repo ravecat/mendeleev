@@ -5,7 +5,9 @@ export default {
     primaryTextColor: '#212121',
     secondaryTextColor: '#757575',
     textColor: '#FFFFFF',
-    dividerColor: '#BDBDBD'
+    dividerColor: '#BDBDBD',
+    icon: '#FFFFFF',
+    primaryIcon: '#4d91fE'
   },
   textSize: {
     header: '20px',
