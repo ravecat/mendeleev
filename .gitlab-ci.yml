@@ -78,7 +78,6 @@ test_lint:
     - docker
   except:
     - master
-    - develop
   dependencies:
     - build_app
   script:
@@ -92,7 +91,6 @@ test_app:
     - docker
   except:
     - master
-    - develop
   dependencies:
     - build_app
   script:
