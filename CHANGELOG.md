@@ -1,3 +1,11 @@
+# [0.3.0](https://gitlab.com/ravecat/mendeleev/compare/0.2.1...0.3.0) (2019-12-18)
+
+
+### Features
+
+* **components:** add properties page ([2b34639](https://gitlab.com/ravecat/mendeleev/commit/2b346393d7498a909381a5911176e6ab457f328a))
+* **components:** update UI element detail ([9351b16](https://gitlab.com/ravecat/mendeleev/commit/9351b16fa171c278b9921c41ca7380cc63b2f5f8))
+
 ## [0.2.1](https://gitlab.com/ravecat/mendeleev/compare/0.2.0...0.2.1) (2019-12-10)
 
 
