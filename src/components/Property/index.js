@@ -2,15 +2,15 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-const Property = ({ title, children }) => (
+const Property = ({ property, children }) => (
   <Wrapper>
-    <span>{title}</span>
+    <span>{property}</span>
     <Value>{children}</Value>
   </Wrapper>
 );
 
 Property.propTypes = {
-  title: PropTypes.string.isRequired,
+  property: PropTypes.string.isRequired,
   children: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.node]).isRequired
 };
 

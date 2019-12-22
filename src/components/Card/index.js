@@ -10,7 +10,7 @@ function Card({ data }) {
   return (
     <Wrapper>
       {basic.map(key => (
-        <Property key={key} title={key}>
+        <Property key={key} property={key}>
           {data[key]}
         </Property>
       ))}

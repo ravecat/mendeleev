@@ -2,7 +2,7 @@ import { applySpec, always } from 'ramda';
 
 import Properties from './view';
 
-import { SCHEMA } from 'common/schema';
+import { SCHEMA } from 'common/constants';
 import { setProps } from 'common/hoc/setProps';
 import { getSchemaBasicProperties, getSchemaDomainProperties } from 'store/selectors/element';
 

@@ -8,6 +8,7 @@ import Main from 'screen/Main';
 import Element from 'screen/Element';
 import Properties from 'screen/Properties';
 import Elements from 'screen/Elements';
+import Property from 'screen/Property';
 import { ELEMENTS, HOME, PROPERTIES } from 'common/routes';
 
 const App = () => (
@@ -17,8 +18,9 @@ const App = () => (
       <Switch>
         <Route component={Main} exact path={HOME} />
         <Route component={Elements} exact path={ELEMENTS} />
-        <Route component={Properties} exact path={PROPERTIES} />
         <Route component={Element} path={`${ELEMENTS}/:id`} />
+        <Route component={Properties} exact path={PROPERTIES} />
+        <Route component={Property} exact path={`${PROPERTIES}/:property`} />
       </Switch>
     </Article>
   </>

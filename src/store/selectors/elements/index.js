@@ -1,5 +1,6 @@
 import { createSelector } from 'reselect';
 import {
+  T,
   sortBy,
   prop,
   path,
@@ -13,9 +14,17 @@ import {
   groupWith,
   pathOr,
   last,
-  pipe
+  pipe,
+  always,
+  applySpec,
+  complement,
+  isNil,
+  head,
+  cond,
+  is
 } from 'ramda';
 
+import { expandObj } from 'utils/ramda';
 import { BLOCK } from 'common/constants';
 
 export const getState = ({ elements }) => elements;
@@ -64,3 +73,45 @@ export const getElementGroups = createSelector(
   getElements,
   pipe(filterNonBaseElement, separateByPeriod, separatePeriodsByBlock, unnest, setGroupTitle)
 );
+
+export const getChartData = ({ property }) =>
+  createSelector(
+    getElements,
+    pipe(
+      map(
+        pipe(
+          expandObj,
+          cond([
+            [
+              () => anyPass([equals('atomicNumber'), equals('atomicWeight')])(property),
+              applySpec({ decimal: prop(property), element: prop('symbol'), unit: always(null) })
+            ],
+            [
+              pipe(path([property, 'value']), complement(is(Object))),
+              applySpec({
+                element: prop('symbol'),
+                decimal: pipe(path([property, 'value']), Number),
+                unit: path([property, 'unit'])
+              })
+            ],
+            [
+              pipe(path([property, 'value']), is(Object)),
+              applySpec({
+                value: path([property, 'value']),
+                decimal: pipe(path([property, 'value']), ({ p, M, n }) => M * n ** p),
+                unit: path([property, 'unit']),
+                exponential: pipe(path([property, 'value']), ({ p, M }) => `${M}E${p}`),
+                element: prop('symbol')
+              })
+            ],
+            [T, always(null)]
+          ])
+        )
+      ),
+      filter(complement(anyPass([isNil, pipe(prop('decimal'), equals(NaN)), complement(prop('decimal'))]))),
+      applySpec({
+        data: map(obj => [prop('element', obj), prop('decimal', obj)]),
+        unit: pipe(head, prop('unit'))
+      })
+    )
+  );

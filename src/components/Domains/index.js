@@ -12,7 +12,7 @@ function Domains({ data }) {
       {data.map(({ domain, label }) => (
         <Collapse details key={label} summary={label}>
           {domain.map(({ label: property, value }) => (
-            <Property key={property} title={property}>
+            <Property key={property} property={property}>
               <Value {...value} />
             </Property>
           ))}

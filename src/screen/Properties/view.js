@@ -1,30 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Link as RegularLink } from 'react-router-dom';
 import { Collapse, Accordion as BaseAccordion } from 'styled-components-toolbox';
 
-import RegularIcon from 'components/Icon';
-import { ReactComponent as Bars } from 'asset/bars.svg';
-import { ReactComponent as Chart } from 'asset/chart.svg';
 import Title from 'components/Title';
 import Property from 'components/Property';
+import ChartBlock from 'components/ChartBlock';
 
 const Properties = ({ basic, domains, pathname }) => {
   return (
     <Wrapper>
       <Title>Properties</Title>
       <Basic>
-        {basic.map(({ label, isMeasurable, path }) => (
-          <Property key={label} title={label}>
-            {isMeasurable ? (
-              <Link to={`${pathname}/${label}`}>
-                <Icon asset={<Chart />} pointer />
-              </Link>
-            ) : null}
-            <Link to={`${pathname}/${label}`}>
-              <Icon asset={<Bars />} pointer />
-            </Link>
+        {basic.map(({ label, isMeasurable }) => (
+          <Property key={label} property={label}>
+            <ChartBlock isMeasurable={isMeasurable} label={label} pathname={pathname} />
           </Property>
         ))}
       </Basic>
@@ -32,15 +22,8 @@ const Properties = ({ basic, domains, pathname }) => {
         {domains.map(({ properties, label: domain }) => (
           <Collapse details key={domain} summary={domain}>
             {properties.map(({ label, isMeasurable }) => (
-              <Property key={label} title={label}>
-                {isMeasurable ? (
-                  <Link to={`${pathname}/${label}`}>
-                    <Icon asset={<Chart />} pointer />
-                  </Link>
-                ) : null}
-                <Link to={`${pathname}/${label}`}>
-                  <Icon asset={<Bars />} pointer />
-                </Link>
+              <Property key={label} property={label}>
+                <ChartBlock isMeasurable={isMeasurable} label={label} pathname={pathname} />
               </Property>
             ))}
           </Collapse>
@@ -76,22 +59,6 @@ const Wrapper = styled.div`
 
 const Basic = styled.div`
   padding: 12px;
-`;
-
-const Icon = styled(RegularIcon)`
-  width: 18px;
-  height: 18px;
-  fill: ${({ theme }) => theme.colors.dividerColor};
-
-  &:hover {
-    fill: ${({ theme }) => theme.colors.primaryIcon};
-  }
-`;
-
-const Link = styled(RegularLink)`
-  & + & {
-    margin-left: 10px;
-  }
 `;
 
 const Accordion = styled(BaseAccordion)`
