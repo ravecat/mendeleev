@@ -1,3 +1,10 @@
+# [0.4.0](https://gitlab.com/ravecat/mendeleev/compare/0.3.0...0.4.0) (2020-01-10)
+
+
+### Features
+
+* **components:** add specific property page (chart) ([ec90046](https://gitlab.com/ravecat/mendeleev/commit/ec90046bcee2f6d6c38aacc31c62973f636a090b))
+
 # [0.3.0](https://gitlab.com/ravecat/mendeleev/compare/0.2.1...0.3.0) (2019-12-18)
 
 
