@@ -6,7 +6,7 @@
     "url": "https://gitlab.com/ravecat/mendeleev.git"
   },
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "camel-case": "^3.0.0",
     "connected-react-router": "^6.5.2",
     "highcharts": "^8.0.0",
