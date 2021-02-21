@@ -1,5 +1,11 @@
+/build
+/node_modules
+/coverage
+/dist
+/public/scripts/pdf.js
 /scripts
 /public
+/legacy
 /config
-/coverage
-/build
+*.config.js
+.eslintrc.js

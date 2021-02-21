@@ -1,3 +1,5 @@
+# See https://help.github.com/ignore-files/ for more about ignoring files.
+
 # dependencies
 /node_modules
 
@@ -6,19 +8,14 @@
 
 # production
 /build
-/dist
-.rpt2_cache
-docker-compose.override.yml
 
 # misc
 .DS_Store
-
-**/*.local
-**/*.prod
+.env.local
+.env.*.local
+.vscode
 /data
 
-*.log
-*.tsbuildinfo
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
