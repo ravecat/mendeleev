@@ -1,0 +1,6 @@
+vendor/**/*.css
+/node_modules
+/coverage
+/build
+/app
+/config

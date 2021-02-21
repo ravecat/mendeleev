@@ -1,103 +1,117 @@
 {
+  "private": true,
   "name": "mendeleev",
-  "version": "0.1.0",
+  "version": "0.4.0",
+  "author": "Max Sharov",
+  "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://gitlab.com/ravecat/mendeleev.git"
+    "url": "https://gitlab.com/rvct/mendeleev.git"
   },
-  "dependencies": {
-    "axios": "^0.18.0",
-    "camel-case": "^3.0.0",
-    "connected-react-router": "^6.5.2",
-    "highcharts": "^8.0.0",
-    "highcharts-react-official": "^2.2.2",
-    "history": "^4.10.1",
-    "polished": "^3.4.2",
-    "prop-types": "^15.7.2",
-    "ramda": "^0.26.1",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
-    "react-redux": "^7.1.1",
-    "react-responsive": "^6.1.1",
-    "react-router-dom": "^4.3.1",
-    "react-router-prop-types": "^1.0.4",
-    "react-scripts": "3.2.0",
-    "recharts": "^2.0.0-beta.1",
-    "redux": "^4.0.1",
-    "redux-actions": "^2.6.4",
-    "redux-saga": "^1.0.2",
-    "reselect": "^4.0.0",
-    "styled-components": "^4.1.3",
-    "styled-components-toolbox": "0.5.1"
-  },
-  "devDependencies": {
-    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.4.4",
-    "@babel/plugin-proposal-optional-chaining": "^7.6.0",
-    "@commitlint/cli": "^8.2.0",
-    "@commitlint/config-angular": "^8.2.0",
-    "@semantic-release/changelog": "^3.0.5",
-    "@semantic-release/git": "^7.0.18",
-    "@semantic-release/gitlab": "^4.0.4",
-    "babel-eslint": "^10.0.3",
-    "babel-plugin-styled-components": "^1.10.6",
-    "customize-cra": "^0.9.1",
-    "cz-customizable": "^6.2.0",
-    "eslint": "^6.6.0",
-    "eslint-config-airbnb": "^18.0.1",
-    "eslint-config-prettier": "^6.5.0",
-    "eslint-config-react-app": "^5.0.2",
-    "eslint-loader": "^3.0.2",
-    "eslint-plugin-import": "^2.18.2",
-    "eslint-plugin-jest": "^23.0.3",
-    "eslint-plugin-jsx-a11y": "^6.2.3",
-    "eslint-plugin-prettier": "^3.1.1",
-    "eslint-plugin-react": "^7.16.0",
-    "eslint-plugin-react-hooks": "^2.3.0",
-    "husky": "^3.0.9",
-    "lint-staged": "9.4.3",
-    "node-sass": "^4.13.0",
-    "prettier": "^1.19.1",
-    "react-app-rewired": "^2.1.5",
-    "sass-extract": "^2.1.0",
-    "sass-extract-js": "^0.4.0",
-    "sass-extract-loader": "^1.1.0",
-    "semantic-release": "^15.13.30",
-    "stylelint": "^12.0.0",
-    "stylelint-config-standard": "^19.0.0",
-    "stylelint-config-styled-components": "^0.1.1"
+  "bugs": {
+    "url": "https://gitlab.com/rvct/mendeleev/issues"
   },
   "scripts": {
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
-    "test": "CI=true react-app-rewired test --passWithNoTests",
     "eject": "react-scripts eject",
-    "release:debug": "semantic-release --debug",
-    "lint:eslint": "eslint '**/*.{js,jsx}'",
-    "lint:stylelint": "stylelint '**/*.{js,jsx,css}'",
-    "lint": "yarn lint:eslint && yarn lint:stylelint",
-    "lint:fix": "yarn lint:eslint --fix && yarn lint:stylelint",
-    "prettier": "prettier --check *.{css,md,yml,json}"
+    "commit": "./node_modules/cz-customizable/standalone.js",
+    "test": "jest -c .config/jest.config.js --passWithNoTests",
+    "test:commit": "commitlint -g .config/commitlint.config.js --from=HEAD~1",
+    "test:type": "tsc --noEmit",
+    "test:lint:eslint": "eslint \"src/**/*.{js,jsx,ts,tsx}\"",
+    "test:lint:stylelint": "stylelint \"src/**/*.{js,jsx,ts,tsx,css}\"",
+    "test:lint": "yarn test:lint:eslint && yarn test:lint:stylelint",
+    "test:lint:fix": "yarn test:lint:eslint --fix && yarn test:lint:stylelint",
+    "release": "semantic-release --extends .config/.releaserc.js",
+    "test:prettier": "prettier --check *.{md,yml,json}"
+  },
+  "dependencies": {
+    "@reatom/core": "^1.1.5",
+    "@reatom/react": "^1.1.4",
+    "axios": "^0.21.1",
+    "highcharts": "^9.0.1",
+    "highcharts-react-official": "^3.0.0",
+    "ramda": "^0.27.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-responsive": "^8.2.0",
+    "react-router5": "^8.0.1",
+    "router5": "^8.0.1",
+    "router5-plugin-browser": "^8.0.1",
+    "styled-components": "^5.2.1",
+    "styled-components-toolbox": "^0.7.2"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^11.0.0",
+    "@commitlint/config-angular": "^11.0.0",
+    "@reatom/babel-plugin": "^1.0.0",
+    "@reatom/debug": "^1.2.0",
+    "@semantic-release/changelog": "^5.0.1",
+    "@semantic-release/commit-analyzer": "^8.0.1",
+    "@semantic-release/git": "^9.0.0",
+    "@semantic-release/gitlab": "^6.0.9",
+    "@semantic-release/npm": "^7.0.10",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "@types/jest": "^26.0.15",
+    "@types/node": "^12.0.0",
+    "@types/ramda": "^0.27.38",
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
+    "@types/react-responsive": "^8.0.2",
+    "@types/styled-components": "^5.1.7",
+    "@typescript-eslint/eslint-plugin": "^4.11.0",
+    "@typescript-eslint/parser": "^4.11.0",
+    "babel-jest": "^26.6.3",
+    "customize-cra": "^1.0.0",
+    "cz-customizable": "^6.3.0",
+    "dotenv": "^8.2.0",
+    "dotenv-expand": "^5.1.0",
+    "eslint": "^7.17.0",
+    "eslint-config-prettier": "^7.1.0",
+    "eslint-config-react": "^1.1.7",
+    "eslint-config-react-app": "^6.0.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jest": "^24.1.3",
+    "eslint-plugin-prettier": "^3.3.0",
+    "eslint-plugin-simple-import-sort": "^7.0.0",
+    "husky": "^4.3.7",
+    "lint-staged": "^10.5.3",
+    "prettier": "^2.2.1",
+    "react-app-rewired": "^2.1.8",
+    "react-scripts": "^4.0.0",
+    "router5-plugin-logger": "^8.0.1",
+    "semantic-release": "^17.3.7",
+    "sirv-cli": "^1.0.0-next.3",
+    "stylelint": "^13.8.0",
+    "stylelint-config-prettier": "^8.0.2",
+    "stylelint-config-recommended": "^3.0.0",
+    "stylelint-config-standard": "^20.0.0",
+    "stylelint-config-styled-components": "^0.1.1",
+    "stylelint-processor-styled-components": "^1.10.0",
+    "typescript": "^4.2.3",
+    "yarn": "^1.22.10"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+      "pre-commit": "lint-staged -v && yarn test:type && yarn test",
+      "commit-msg": "commitlint -g .config/commitlint.config.js -E HUSKY_GIT_PARAMS"
     }
   },
   "lint-staged": {
-    "*.{js,jsx}": [
-      "eslint --fix",
-      "stylelint",
-      "git add"
+    "*.{js,jsx,ts,tsx,css}": [
+      "yarn test:lint:fix"
     ],
-    "*.{css,md,yml,json}": [
-      "prettier --write",
-      "git add"
-    ],
-    "*": [
-      "yarn test",
-      "git add"
+    "*.{md,yml,json}": [
+      "yarn test:prettier --write"
     ]
+  },
+  "config": {
+    "cz-customizable": {
+      "config": ".config/commitizen.config.js"
+    }
   },
   "browserslist": {
     "production": [
@@ -110,13 +124,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "config": {
-    "commitizen": {
-      "path": "node_modules/cz-customizable"
-    },
-    "cz-customizable": {
-      "config": "./commitizen.config.js"
-    }
   }
 }

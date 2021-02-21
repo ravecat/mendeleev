@@ -1,14 +1,12 @@
-FROM node:10.13-alpine as builder
+FROM node:15.8-alpine3.13 as builder
 WORKDIR /app
 COPY . .
-RUN yarn install && \
+RUN yarn && \
     yarn build
 
-FROM alpine
-RUN apk update && apk add ca-certificates nginx && rm -rf /var/cache/apk/*
-RUN mkdir /run/nginx && touch /run/nginx/nginx.pid
+FROM nginx:stable-alpine
 WORKDIR /app
 COPY --from=builder /app/build /app
-COPY ./nginx.conf /etc/nginx/conf.d/default.conf
+COPY .config/nginx.conf /etc/nginx/conf.d/default.conf
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]

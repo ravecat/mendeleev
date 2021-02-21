@@ -12,7 +12,6 @@ stages:
   - release
   - publish
   - deploy
-  - cleaning
 
 variables:
   IMAGE: ravecat/mendeleev
@@ -128,6 +127,7 @@ deploy:
     - tags
   variables:
     PORT: 3001
+    NODE_ENV: production
   script:
     - echo "$(echo "$REGISTRY_PASSWORD" | base64 -d)" | docker login -u "$(echo "$REGISTRY_USER" | base64 -d)" --password-stdin
     - apk add py-pip
@@ -136,14 +136,3 @@ deploy:
     - docker-compose build --no-cache
     - docker-compose up -d
     - docker logout
-
-cleaning:
-  stage: cleaning
-  tags:
-    - docker
-  only:
-    - develop
-  dependencies: []
-  script:
-    - docker info
-    - docker system prune -af
