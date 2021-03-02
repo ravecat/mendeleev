@@ -1,4 +1,4 @@
-import { ElementType } from "common/constants";
+import { ElementType } from "api/element";
 import { withProps } from "common/hoc";
 import { Aside as AsideView } from "components/Aside";
 

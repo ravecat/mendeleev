@@ -1,4 +1,4 @@
-import { ElementType } from "common/constants";
+import { ElementType } from "api/element";
 
 export const theme = {
   colors: {

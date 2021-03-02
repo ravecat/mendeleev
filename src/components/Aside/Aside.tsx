@@ -3,8 +3,8 @@ import React from "react";
 import styled from "styled-components";
 import { Icon as BaseIcon, Media } from "styled-components-toolbox";
 
-import { Link, ROUTES } from "App/withRouting";
-import { ElementType } from "common/constants";
+import { ElementType } from "api/element";
+import { Link, ROUTES } from "app/routing";
 
 export interface AsideProps {
   children?: ReactNode;
@@ -16,7 +16,7 @@ export interface AsideProps {
   type: ElementType;
 }
 
-export const Aside = ({ fetching, element, type }: AsideProps) => (
+export const Aside = ({ fetching, element, type }: AsideProps): JSX.Element => (
   <Wrapper>
     <Link routeName={ROUTES.HOME}>
       <Icon alt="table" asset="◰" pointer />

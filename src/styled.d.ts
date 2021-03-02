@@ -1,6 +1,6 @@
 import "styled-components";
 
-import { theme } from "App/withTheme";
+import { theme } from "app/theme";
 
 type RedefinedTheme = typeof theme;
 

@@ -1,15 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import { router } from "App/withRouting";
+import { router } from "app/routing";
 
-import { App } from "./App";
+import { App } from "./app";
 
 router.start(() => {
-  ReactDOM.render(
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>,
-    document.getElementById("root")
-  );
+  ReactDOM.render(<App />, document.getElementById("root"));
 });

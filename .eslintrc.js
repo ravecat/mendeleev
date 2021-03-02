@@ -5,11 +5,11 @@ module.exports = {
     sourceType: 'module',
     tsconfigRootDir: __dirname,
     project: [
-      "./.config/tsconfig.eslint.json"
+      ".config/tsconfig.eslint.json"
     ],
   },
   extends: [
-    "./.config/.eslintrc.common.js",
+    ".config/.eslintrc.common.js",
     "react-app",
     "react-app/jest",
     "plugin:@typescript-eslint/recommended",
@@ -35,7 +35,7 @@ module.exports = {
           // Side effect imports.
           ["^\\u0000"],
           // Internal packages.
-          ["^(@|App|components|connections|utils|common|ConnectedApp)(/.*|$)"],
+          ["^(@|api|app|components|connections|utils|common|ConnectedApp)(/.*|$)"],
           // Parent imports. Put `..` last.
           ["^\\.\\.(?!/?$)", "^\\.\\./?$"],
           // Other relative imports. Put same-folder imports and `.` last.
