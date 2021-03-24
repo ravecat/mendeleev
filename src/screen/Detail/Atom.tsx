@@ -179,6 +179,7 @@ const Info = styled.span`
   justify-content: center;
   align-items: center;
   padding: 4px;
+  margin: 0 4px;
 
   &:before {
     ${borderShadow};

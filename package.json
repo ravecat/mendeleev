@@ -1,8 +1,8 @@
 {
-  "private": true,
   "name": "mendeleev",
   "version": "0.4.0",
   "author": "Max Sharov",
+  "private": true,
   "license": "MIT",
   "repository": {
     "type": "git",

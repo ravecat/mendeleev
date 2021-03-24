@@ -1,0 +1,18 @@
+version: '3.5'
+
+services:
+  app:
+    container_name: ${PROJECT:-app}-${RELEASE}
+    image: ${IMAGE:-node:15.8-alpine3.13}
+    restart: unless-stopped
+    networks:
+      - gateway
+    labels:
+      - traefik.http.routers.${CI_COMMIT_SHORT_SHA}.rule=Host(`${HOST:?"SET HOST"}`)
+      - traefik.http.middlewares.${CI_COMMIT_SHORT_SHA}.compress=true
+      - traefik.http.routers.${CI_COMMIT_SHORT_SHA}.middlewares=${CI_COMMIT_SHORT_SHA}
+
+networks:
+  gateway:
+    name: "${DOCKER_GATEWAY_NETWORK}"
+    external: true

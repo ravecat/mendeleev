@@ -20,8 +20,6 @@ export enum Block {
   g = "g",
 }
 
-const test = Block["s"];
-
 export const MeasurableMap = {
   name: 0,
   atomicNumber: 1,

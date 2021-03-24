@@ -5,6 +5,12 @@ import React from "react";
 export function connect<AtomState extends Record<string, Atom<unknown>>>(
   mapAtomsToProps: AtomState
 ) {
+  /**
+   * TODO Current implementation return equal name every connect
+   * and rewrite content in redux-devtools
+   */
+  const connectedAtomsState = combine(mapAtomsToProps);
+
   return function <
     OwnProps extends {
       [K in keyof AtomState]: AtomState[K] extends Atom<infer P> ? P : never;
@@ -13,8 +19,8 @@ export function connect<AtomState extends Record<string, Atom<unknown>>>(
     return function WithAtomsState(
       ownProps: Omit<OwnProps, keyof AtomState>
     ): JSX.Element {
-      const connectedAtomsState = useAtom(combine(mapAtomsToProps));
-      const props = { ...ownProps, ...connectedAtomsState } as OwnProps;
+      const stateProps = useAtom(connectedAtomsState);
+      const props = { ...ownProps, ...stateProps } as OwnProps;
 
       return <WrappedComponent {...props} />;
     };
